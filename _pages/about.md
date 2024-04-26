@@ -7,7 +7,13 @@ redirect_from:
   - /about.html
 ---
 
-个人简介 烦烦烦！！！
+I'm a second year master student in finance at[
+Stockholm School of Economics](https://www.hhs.se/en/).
+
+
+You can find my CV here: [Yufang's Curriculum Vitae](../assets/Curriculum_Vitae.pdf).
+
+[Email](yaffazhang87@gmail.com)
 
 For more info
 ------
