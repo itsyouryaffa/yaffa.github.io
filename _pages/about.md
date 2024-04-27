@@ -13,10 +13,9 @@ Stockholm School of Economics](https://www.hhs.se)*
 + *[CV](../assets/CV.pdf)*
 + *Proficient in Python, R, SQL, Tableau, Power BI, Java, JavaScript, Excel*
 + *Proficient in tarot and astrology-based therapy [Paid service: email me to book a time slot](mailto:yaffazhang87@gmail.com)*
-
 --------------------------------
 
-# Project Experience
+# 👩🏻‍💻 Project Experience
 **Tableau**
 
 ### 1. RFM Analysis
