@@ -13,10 +13,10 @@ Stockholm School of Economics](https://www.hhs.se)*
 + *[CV](../assets/CV.pdf)*
 + *Proficient in Python, R, SQL, Tableau, Power BI, Java, JavaScript, Excel*
 + *Proficient in tarot and astrology-based therapy [Paid service: email me to book a time slot](mailto:yaffazhang87@gmail.com)*
---------------------------------
+
 
 # 👩🏻‍💻 Project Experience
-**Tableau**
+## Tableau 
 
 ### 1. RFM Analysis
 ✨ __[Case Background](_pages/Tableau.html)__
@@ -29,14 +29,14 @@ Stockholm School of Economics](https://www.hhs.se)*
 
 ✨ __[Dashboard](https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore_17141701306130/1)__
 
----------------------
+
 **Java**
 
 
----------------------
+
 **Python**
 
---------------------
+
 **R**
 
 
