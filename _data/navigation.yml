@@ -1,8 +1,17 @@
 # main links links
 main:
     
-  - title: "Projects"
-    url: /Projects/
+  - title: "Tableau"
+    url: /Tableau/
+
+  - title: "Python"
+    url: /Python/
+    
+  - title: "Java"
+    url: /Java/
+
+  - title: "R"
+    url: /R/
     
   - title: "CV"
     url: /cv/
