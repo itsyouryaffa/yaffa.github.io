@@ -23,7 +23,8 @@ Stockholm School of Economics](https://www.hhs.se)*
 
 __CASE BACKGROUND__
 
-Superstore, a prominent retail chain, seeks to enhance its marketing strategies and market performance through data-driven insights. As a marketing data analyst, your role is to conduct RFM (Recency, Frequency, Monetary) analysis using four years of customer order data. This analysis aims to provide actionable insights for both the marketing management team and local teams, enabling strategic decision-making and market optimization efforts. Through RFM analysis, you will uncover trends in customer behavior, identify opportunities for growth, and empower teams to refine their strategies and better serve their markets.
+<span style="color:grey">
+Superstore, a prominent retail chain, seeks to enhance its marketing strategies and market performance through data-driven insights. As a marketing data analyst, your role is to conduct RFM (Recency, Frequency, Monetary) analysis using four years of customer order data. This analysis aims to provide actionable insights for both the marketing management team and local teams, enabling strategic decision-making and market optimization efforts. Through RFM analysis, you will uncover trends in customer behavior, identify opportunities for growth, and empower teams to refine their strategies and better serve their markets.这是蓝色字体。</span>
 
 __[Dashboard]__(https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore-CustomerSegmentation/Segmentation)
 
