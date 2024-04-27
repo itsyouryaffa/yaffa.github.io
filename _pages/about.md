@@ -15,9 +15,9 @@ Stockholm School of Economics](https://www.hhs.se)*
 + *Proficient in tarot and astrology-based therapy [Paid service: email me to book a time slot](mailto:yaffazhang87@gmail.com)*
 
 
+
 # 👩🏻‍💻 Project Experience
 ## Tableau 
-
 ### 1. RFM Analysis
 ✨ __[Case Background](https://itsyouryaffa.github.io/yaffa.github.io//Tableau/)__
 
