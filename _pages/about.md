@@ -19,13 +19,13 @@ Stockholm School of Economics](https://www.hhs.se)*
 ## Tableau 
 
 ### 1. RFM Analysis
-✨ __[Case Background](_pages/Tableau.html)__
+✨ __[Case Background](https://itsyouryaffa.github.io/yaffa.github.io//Tableau/)__
 
 ✨ __[Dashboard](https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore-CustomerSegmentation/Segmentation)__
 
 ### 2. Sales Analysis
 
-✨ __[Case Background](_pages/Tableau.html)__
+✨ __[Case Background](https://itsyouryaffa.github.io/yaffa.github.io//Tableau/)__
 
 ✨ __[Dashboard](https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore_17141701306130/1)__
 
