@@ -19,7 +19,7 @@ Stockholm School of Economics](https://www.hhs.se)*
   
 # Project Experience 👩🏻‍💻 
 
-## Tableau 🌱
+### Tableau 🌱
 
 **1. RFM Analysis**
 
@@ -34,7 +34,7 @@ Stockholm School of Economics](https://www.hhs.se)*
 ✨ [Dashboard](https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore_17141701306130/1)
 
 
-## Java
+### Java
 
 
 
