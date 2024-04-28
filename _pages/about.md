@@ -16,8 +16,8 @@ Stockholm School of Economics](https://www.hhs.se)*
 
 
 
-# 👩🏻‍💻 Project Experience
-## Tableau 
+# Project Experience 👩🏻‍💻 
+### Tableau 
 ### 1. RFM Analysis
 ✨ __[Case Background](https://itsyouryaffa.github.io/yaffa.github.io//Tableau/)__
 
