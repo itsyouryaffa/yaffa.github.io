@@ -20,24 +20,23 @@ redirect_from:
 
 <div>
     <h1>Project Experience 👩🏻‍💻</h1>
-
-    <h2>Tableau 🌱</h2>
+    <h3>Tableau 🌱</h3>
 
     <p><strong>1. RFM Analysis</strong></p>
     <ul>
-        <li>✨ <a href="https://itsyouryaffa.github.io/yaffa.github.io/Tableau/">Case Background</a></li>
-        <li>✨ <a href="https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore-CustomerSegmentation/Segmentation">Dashboard</a></li>
+       ✨ <a href="https://itsyouryaffa.github.io/yaffa.github.io/Tableau/">Case Background</a>
+       ✨ <a href="https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore-CustomerSegmentation/Segmentation">Dashboard</a>
     </ul>
 
-    <p><strong>2. Sales Analysis</strong></p>
+    <p>2. Sales Analysis</p>
     <ul>
-        <li>✨ <a href="https://itsyouryaffa.github.io/yaffa.github.io/Tableau/">Case Background</a></li>
-        <li>✨ <a href="https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore_17141701306130/1">Dashboard</a></li>
+        ✨ <a href="https://itsyouryaffa.github.io/yaffa.github.io/Tableau/">Case Background</a>
+        ✨ <a href="https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore_17141701306130/1">Dashboard</a>
     </ul>
 
-    <h2>Java</h2>
+    <h3>Java</h3>
 
-    <h2>Python</h2>
+    <h3>Python</h3>
 
-    <h2>R</h2>
+    <h3>R</h3>
 </div>
