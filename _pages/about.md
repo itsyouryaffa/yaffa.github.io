@@ -16,30 +16,32 @@ Stockholm School of Economics](https://www.hhs.se)*
 + *Proficient in tarot and astrology-based therapy [Paid service: email me to book a time slot](mailto:yaffazhang87@gmail.com)*
 
 
+  
 # Project Experience 👩🏻‍💻 
 
-**Tableau**
+### Tableau
 
-#### 1. RFM Analysis
+**1. RFM Analysis**
+
 ✨ [Case Background](https://itsyouryaffa.github.io/yaffa.github.io//Tableau/)
 
 ✨ [Dashboard](https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore-CustomerSegmentation/Segmentation)
 
-#### 2. Sales Analysis
+**2. Sales Analysis**
 
 ✨ [Case Background](https://itsyouryaffa.github.io/yaffa.github.io//Tableau/)
 
 ✨ [Dashboard](https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore_17141701306130/1)
 
 
-**Java**
+### Java
 
 
 
-**Python**
+### Python
 
 
-**R**
+### R
 
 
 
