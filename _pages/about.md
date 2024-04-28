@@ -7,6 +7,7 @@ redirect_from:
   - /about.html
 ---
 
+<div style="font-family: 'Times New Roman', Times, serif;">
 
 + *MSc in finance at[
 Stockholm School of Economics](https://www.hhs.se)*
@@ -15,6 +16,7 @@ Stockholm School of Economics](https://www.hhs.se)*
 + *Proficient in Python, R, SQL, Tableau, Power BI, Java, JavaScript, Excel*
 + *Proficient in tarot and astrology-based therapy [Paid service: email me to book a time slot](mailto:yaffazhang87@gmail.com)*
 
+</div>
 
   
 # Project Experience 👩🏻‍💻 
