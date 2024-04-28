@@ -17,17 +17,17 @@ Stockholm School of Economics](https://www.hhs.se)*
 
 
 # Project Experience 👩🏻‍💻 
-### Tableau 
+## Tableau 
 ### 1. RFM Analysis
-✨ __[Case Background](https://itsyouryaffa.github.io/yaffa.github.io//Tableau/)__
+✨ [Case Background](https://itsyouryaffa.github.io/yaffa.github.io//Tableau/)
 
-✨ __[Dashboard](https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore-CustomerSegmentation/Segmentation)__
+✨ [Dashboard](https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore-CustomerSegmentation/Segmentation)
 
 ### 2. Sales Analysis
 
-✨ __[Case Background](https://itsyouryaffa.github.io/yaffa.github.io//Tableau/)__
+✨ [Case Background](https://itsyouryaffa.github.io/yaffa.github.io//Tableau/)
 
-✨ __[Dashboard](https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore_17141701306130/1)__
+✨ [Dashboard](https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore_17141701306130/1)
 
 
 **Java**
