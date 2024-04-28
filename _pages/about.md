@@ -16,6 +16,7 @@ redirect_from:
     </ul>
 </div>
 
+<hr>
 
 <div>
     <h1>Project Experience 👩🏻‍💻</h1>
