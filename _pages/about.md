@@ -8,42 +8,36 @@ redirect_from:
 ---
 
 <div style="font-family: 'Times New Roman', Times, serif;">
-
-+ *MSc in finance at[
-Stockholm School of Economics](https://www.hhs.se)*
-+ *BSc in finance at [Shanghai International Studies University](sv.shisu.edu.cn)*
-+ *[CV](../assets/CV.pdf)*
-+ *Proficient in Python, R, SQL, Tableau, Power BI, Java, JavaScript, Excel*
-+ *Proficient in tarot and astrology-based therapy [Paid service: email me to book a time slot](mailto:yaffazhang87@gmail.com)*
-
+    <ul>
+        <li><em>MSc in finance at <a href="https://www.hhs.se">Stockholm School of Economics</a></em></li>
+        <li><em>BSc in finance at <a href="http://sv.shisu.edu.cn">Shanghai International Studies University</a></em></li>
+        <li><em><a href="../assets/CV.pdf">CV</a></em></li>
+        <li><em>Proficient in Python, R, SQL, Tableau, Power BI, Java, JavaScript, Excel</em></li>
+        <li><em>Proficient in tarot and astrology-based therapy <a href="mailto:yaffazhang87@gmail.com">Paid service: email me to book a time slot</a></em></li>
+    </ul>
 </div>
 
-  
-# Project Experience 👩🏻‍💻 
 
-## Tableau 🌱
+<div>
+    <h1>Project Experience 👩🏻‍💻</h1>
 
-**1. RFM Analysis**
+    <h2>Tableau 🌱</h2>
 
-✨ [Case Background](https://itsyouryaffa.github.io/yaffa.github.io//Tableau/)
+    <p><strong>1. RFM Analysis</strong></p>
+    <ul>
+        <li>✨ <a href="https://itsyouryaffa.github.io/yaffa.github.io/Tableau/">Case Background</a></li>
+        <li>✨ <a href="https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore-CustomerSegmentation/Segmentation">Dashboard</a></li>
+    </ul>
 
-✨ [Dashboard](https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore-CustomerSegmentation/Segmentation)
+    <p><strong>2. Sales Analysis</strong></p>
+    <ul>
+        <li>✨ <a href="https://itsyouryaffa.github.io/yaffa.github.io/Tableau/">Case Background</a></li>
+        <li>✨ <a href="https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore_17141701306130/1">Dashboard</a></li>
+    </ul>
 
-**2. Sales Analysis**
+    <h2>Java</h2>
 
-✨ [Case Background](https://itsyouryaffa.github.io/yaffa.github.io//Tableau/)
+    <h2>Python</h2>
 
-✨ [Dashboard](https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore_17141701306130/1)
-
-
-### Java
-
-
-
-### Python
-
-
-### R
-
-
-
+    <h2>R</h2>
+</div>
