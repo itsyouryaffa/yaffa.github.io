@@ -20,11 +20,11 @@ redirect_from:
 
 <div>
     <h1>Project Experience 👩🏻‍💻</h1>
-    <p style="font-size: 18x;"><strong>Tableau</strong></p>
+    <p style="font-size: 18px;"><strong>Tableau</strong></p>
 
     <p style="font-family: 'Times New Roman', Times, serif;"><em>1. RFM Analysis</em></p>
     <ul>
-    <p style="font-family: 'Times New Roman', Times, serif;font-size: 14x;">✨ <a href="https://itsyouryaffa.github.io/yaffa.github.io/Tableau/">Case Background</a></p>
+    <p style="font-family: 'Times New Roman', Times, serif;font-size: 14px;">✨ <a href="https://itsyouryaffa.github.io/yaffa.github.io/Tableau/">Case Background</a></p>
     <p style="font-family: 'Times New Roman', Times, serif;font-size: 14px;">✨ <a href="https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore-CustomerSegmentation/Segmentation">Dashboard</a></p>
     </ul>
 
