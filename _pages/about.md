@@ -20,23 +20,17 @@ redirect_from:
 
 <div>
     <h1>Project Experience 👩🏻‍💻</h1>
-    <h3>Tableau 🌱</h3>
+    <h1>Tableau 🌱</h1>
 
-    <p style="font-family: 'Times New Roman', Times, serif;font-size: 11px;"><em>1. RFM Analysis</p></em>
+    <p style="font-family: 'Times New Roman', Times, serif;"><em>1. RFM Analysis</em></p>
     <ul>
-    <p style="font-family: 'Times New Roman', Times, serif;font-size: 11px;">✨ <a href="https://itsyouryaffa.github.io/yaffa.github.io/Tableau/">Case Background</a></p>
+    <p style="font-family: 'Times New Roman', Times, serif;font-size: 12px;">✨ <a href="https://itsyouryaffa.github.io/yaffa.github.io/Tableau/">Case Background</a></p>
     <p style="font-family: 'Times New Roman', Times, serif;font-size: 11px;">✨ <a href="https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore-CustomerSegmentation/Segmentation">Dashboard</a></p>
     </ul>
 
-    <p>2. Sales Analysis</p>
+    <p style="font-family: 'Times New Roman', Times, serif;"><em>2. Sales Analysis</em></p>
     <ul>
-        <p✨ <a href="https://itsyouryaffa.github.io/yaffa.github.io/Tableau/">Case Background</a></p>
-        <p✨ <a href="https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore_17141701306130/1">Dashboard</a></p>
+        <p style="font-family: 'Times New Roman', Times, serif;font-size: 12px;">✨ <a href="https://itsyouryaffa.github.io/yaffa.github.io/Tableau/">Case Background</a></p>
+        <p style="font-family: 'Times New Roman', Times, serif;font-size: 11px;">✨ <a href="https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore_17141701306130/1">Dashboard</a></p>
     </ul>
-
-    <h3>Java</h3>
-
-    <h3>Python</h3>
-
-    <h3>R</h3>
 </div>
