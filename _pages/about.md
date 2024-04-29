@@ -34,3 +34,16 @@ redirect_from:
         <p style="font-family: 'Times New Roman', Times, serif;font-size: 17px;">✨ <a href="https://public.tableau.com/app/profile/yufang.zhang3391/viz/Superstore_17141701306130/1">Dashboard</a></p>
     </ul>
 </div>
+
+<div>
+    <p style="font-size: 22px;"><strong>Python</strong></p>
+   <p style="font-family: 'Times New Roman', Times, serif;"><em>1. Property Sales Prices Prediction</em></p>
+      <p style="font-family: 'Times New Roman', Times, serif;font-size: 17px;">✨ <a href="https://itsyouryaffa.github.io/yaffa.github.io/Python/">Project Background</a></p>
+    <p style="font-family: 'Times New Roman', Times, serif;font-size: 17px;">✨ <a href="https://github.com/itsyouryaffa/code/blob/aa6a1f045003ff00fb67ee4a83fa4801237a46e2/HousePricePrediction.ipynb">Code</a></p>
+  
+    <p style="font-family: 'Times New Roman', Times, serif;"><em>2. Survival Rate Estimation</em></p>
+
+          <p style="font-family: 'Times New Roman', Times, serif;font-size: 17px;">✨ <a href="https://itsyouryaffa.github.io/yaffa.github.io/Python/">Project Background</a></p>
+    <p style="font-family: 'Times New Roman', Times, serif;font-size: 17px;">✨ <a href="https://github.com/itsyouryaffa/code/blob/aa6a1f045003ff00fb67ee4a83fa4801237a46e2/HospitalPatientsSurvivalPrediction.ipynb">Code</a></p>
+    
+</div>
