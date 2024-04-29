@@ -37,7 +37,7 @@ redirect_from:
 
 <div>
     <p style="font-size: 22px;"><strong>🐣 Python</strong></p>
-   <p style="font-family: 'Times New Roman', Times, serif;"><em>1. Property Sales Prices Prediction</em></p>
+   <p style="font-family: 'Times New Roman', Times, serif;"><em>1. House Rent Project</em></p>
       <ul>
       <p style="font-family: 'Times New Roman', Times, serif;font-size: 17px;">✨ <a href="https://itsyouryaffa.github.io/yaffa.github.io/Python/">Project Background</a></p>
     <p style="font-family: 'Times New Roman', Times, serif;font-size: 17px;">✨ <a href="https://github.com/itsyouryaffa/code/blob/aa6a1f045003ff00fb67ee4a83fa4801237a46e2/HousePricePrediction.ipynb">Code</a></p>
@@ -52,3 +52,34 @@ redirect_from:
  </ul>
     
 </div>
+
+<div>
+    <p style="font-size: 22px;"><strong>🐣 Java</strong></p>
+   <p style="font-family: 'Times New Roman', Times, serif;"><em>1. House Rent Project</em></p>
+      <ul>
+      <p style="font-family: 'Times New Roman', Times, serif;font-size: 17px;">✨ <a href="https://itsyouryaffa.github.io/yaffa.github.io/Java/">Project Description</a></p>
+    <p style="font-family: 'Times New Roman', Times, serif;font-size: 17px;">✨ <a href="https://github.com/itsyouryaffa/code/tree/aa6a1f045003ff00fb67ee4a83fa4801237a46e2/House%20Rent%20Project">Code</a></p>
+      </ul>
+
+  
+    <p style="font-family: 'Times New Roman', Times, serif;"><em>2. Online Message Project</em></p>
+ <ul>
+          <p style="font-family: 'Times New Roman', Times, serif;font-size: 17px;">✨ <a href="https://itsyouryaffa.github.io/yaffa.github.io/Java/">Project Description</a></p>
+    <p style="font-family: 'Times New Roman', Times, serif;font-size: 17px;">✨ <a href="https://github.com/itsyouryaffa/code/tree/aa6a1f045003ff00fb67ee4a83fa4801237a46e2/Online%20Message%20Project">Code</a></p>
+ </ul>
+</div>
+
+<div>
+    <p style="font-size: 22px;"><strong>🐣 R</strong></p>
+   <p style="font-family: 'Times New Roman', Times, serif;"><em>1. Risk Analysis of Euro Stoxx 50</em></p>
+      <ul>
+      <p style="font-family: 'Times New Roman', Times, serif;font-size: 17px;">✨ <a href="https://itsyouryaffa.github.io/yaffa.github.io/R/">Project Description</a></p>
+    <p style="font-family: 'Times New Roman', Times, serif;font-size: 17px;">✨ <a href="https://github.com/itsyouryaffa/code/blob/aa6a1f045003ff00fb67ee4a83fa4801237a46e2/Stock%20Risk%20Management.Rmd">Code</a></p>
+      </ul>
+</div>
+
+<br>
+<button type="button" onclick="alert('Have a good day! 😊')" style="font-size: 16px; padding: 10px 20px; background-color: #FFF894; color: #333; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
+    To be continued...
+</button>
+
