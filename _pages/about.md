@@ -79,7 +79,7 @@ redirect_from:
 </div>
 
 <br>
-<button type="button" onclick="alert('Have a good day! 😊')" style="font-size: 16px; padding: 10px 20px; background-color: #FFF894; color: #333; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
+<button type="button" onclick="alert('Wow!! Let's have a good day!! 😊')" style="font-size: 16px; padding: 10px 20px; background-color: #FFF894; color: #333; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
     To be continued...
 </button>
 
