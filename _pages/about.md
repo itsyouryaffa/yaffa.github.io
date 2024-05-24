@@ -37,7 +37,7 @@ redirect_from:
 
 <div>
     <p style="font-size: 22px;"><strong>🐣 Python</strong></p>
-   <p style="font-family: 'Times New Roman', Times, serif;"><em>1. House Rent Project</em></p>
+   <p style="font-family: 'Times New Roman', Times, serif;"><em>1. Property Sales Prices Prediction</em></p>
       <ul>
       <p style="font-family: 'Times New Roman', Times, serif;font-size: 17px;">✨ <a href="https://itsyouryaffa.github.io/yaffa.github.io/Python/">Project Background</a></p>
     <p style="font-family: 'Times New Roman', Times, serif;font-size: 17px;">✨ <a href="https://github.com/itsyouryaffa/code/blob/aa6a1f045003ff00fb67ee4a83fa4801237a46e2/HousePricePrediction.ipynb">Code</a></p>
