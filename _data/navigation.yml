@@ -12,5 +12,9 @@ main:
 
   - title: "R"
     url: /R/
+
+  - title: "Chat Now!"
+    url: /chat/
+    
     
 
