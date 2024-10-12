@@ -5,4 +5,89 @@ permalink: /swish/
 author_profile: False
 ---
 
-?
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Swish Me</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        img {
+            max-width: 300px;
+            height: auto;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>How to Swish Me</h1>
+        
+        <p>Follow these simple steps to send money via Swish:</p>
+        
+        <ol>
+            <li>Open your Swish app on your phone.</li>
+            <li>Tap on the "Scan QR Code" option.</li>
+            <li>Scan the photo below:</li>
+        </ol>
+
+        <img src="your-qr-code-image.jpg" alt="QR Code" id="qr-code">
+
+        <p>After scanning the code, you'll be prompted to enter the amount.</p>
+        
+        <button onclick="openSwishApp()">Open Swish App</button>
+
+        <p>Once you enter the amount and confirm, the money will be sent to me!</p>
+    </div>
+
+    <script>
+        // Function to open the Swish App using the App Store link
+        function openSwishApp() {
+            window.location.href = "https://apps.apple.com/se/app/swish-payments/id563204724?l=en";
+        }
+    </script>
+    
+</body>
+</html>
+
