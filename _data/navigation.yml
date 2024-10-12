@@ -1,7 +1,13 @@
 # main links links
 main:
     
-  - title: "Tableau"
+  - title: "Chat Now!"
+    url: /chat/
+
+   - title: "Swish Me!"
+    url: /swish/
+    
+    - title: "Tableau"   
     url: /Tableau/
 
   - title: "Python"
@@ -12,9 +18,6 @@ main:
 
   - title: "R"
     url: /R/
-
-  - title: "Chat Now!"
-    url: /chat/
     
     
 
