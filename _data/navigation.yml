@@ -3,21 +3,20 @@ main:
     
   - title: "Chat Now!"
     url: /chat/
-
-   - title: "Swish Me!"
-    url: /swish/
     
-    - title: "Tableau"   
-    url: /Tableau/
-
-  - title: "Python"
-    url: /Python/
+  - title: "Swish Me!"
+    url: /swish/
     
   - title: "Java"
     url: /Java/
 
   - title: "R"
     url: /R/
+
+  - title: "Python"
+    url: /Python/
     
-    
+  - title: "Tableau"
+    url: /Tableau/
+
 
