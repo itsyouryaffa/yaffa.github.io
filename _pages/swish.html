@@ -81,14 +81,17 @@ author_profile: False
         <button onclick="openSwishApp()">Open Swish App</button>
 
         <p>Once you enter the amount and confirm, the money will be sent to me!</p>
-    </div>
 
-    <script>
-        // Function to open the Swish App using the App Store link
-        function openSwishApp() {
-            window.location.href = "https://apps.apple.com/us/app/swish-payments/id563204724";
-        }
-    </script>
+        <script>
+            function openSwishApp() {
+                try {
+                    window.location.href = "https://apps.apple.com/us/app/swish-payments/id563204724";
+                } catch (e) {
+                    alert("Unable to open the Swish app. Please visit the following link manually: https://apps.apple.com/us/app/swish-payments/id563204724");
+                }
+            }
+        </script>
+
     
     <h1>Thank you!</h1>
     <br>
