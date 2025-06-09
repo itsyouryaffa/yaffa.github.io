@@ -7,16 +7,16 @@ main:
   - title: "Swish Me!"
     url: /swish/
     
-  - title: "Java"
-    url: /Java/
+  # - title: "Java"
+  #   url: /Java/
 
-  - title: "R"
-    url: /R/
+  # - title: "R"
+  #   url: /R/
 
-  - title: "Python"
-    url: /Python/
+  # - title: "Python"
+  #   url: /Python/
     
-  - title: "Tableau"
-    url: /Tableau/
+  # - title: "Tableau"
+  #   url: /Tableau/
 
 
