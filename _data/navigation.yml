@@ -1,22 +1,19 @@
 # main links links
 main:
+
+- title: "Python"
+    url: /Python/
+
+- title: "R"
+    url: /R/
     
-  - title: "Chat Now!"
+- title: "Tableau"
+    url: /Tableau/
+    
+- title: "Chat Now!"
     url: /chat/
-    
-  - title: "Swish Me!"
+
+- title: "Swish Me!"
     url: /swish/
-    
-  # - title: "Java"
-  #   url: /Java/
-
-  # - title: "R"
-  #   url: /R/
-
-  # - title: "Python"
-  #   url: /Python/
-    
-  # - title: "Tableau"
-  #   url: /Tableau/
 
 
