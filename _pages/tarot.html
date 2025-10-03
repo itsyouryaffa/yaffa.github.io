@@ -6,21 +6,18 @@ author_profile: False
 ---
 
 <div class="container">
-    <h1>🔮</h1>
-    <button id="draw-btn">抽牌</button>
+    <h1>🔮 </h1>
+    <button id="draw-btn">Draw Cards</button>
 
     <div class="cards-container" id="cards-container">
         <div class="card-wrapper">
-            <img class="tarot-img" src="../images/back.jpg" alt="牌1">
-            <div class="card-result"></div>
+            <img class="tarot-img" src="../images/back.jpg" alt="Card 1">
         </div>
         <div class="card-wrapper">
-            <img class="tarot-img" src="../images/back.jpg" alt="牌2">
-            <div class="card-result"></div>
+            <img class="tarot-img" src="../images/back.jpg" alt="Card 2">
         </div>
         <div class="card-wrapper">
-            <img class="tarot-img" src="../images/back.jpg" alt="牌3">
-            <div class="card-result"></div>
+            <img class="tarot-img" src="../images/back.jpg" alt="Card 3">
         </div>
     </div>
 </div>
@@ -39,9 +36,8 @@ h1 { color: #4a148c; }
 .cards-container { display: flex; justify-content: center; gap: 20px; margin-top: 30px; }
 .card-wrapper { perspective: 1000px; }
 .tarot-img { width: 150px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 1s; }
-.card-result { margin-top: 8px; font-weight: bold; text-align: center; }
 button { padding: 10px 20px; font-size: 18px; background: #6a1b9a; color: white; border: none; border-radius: 5px; cursor: pointer; }
 button:hover { background: #4a148c; }
 </style>
 
-<script src="../assets/js/tarot.js"></script>
+<script src="/assets/js/tarot.js"></script>
