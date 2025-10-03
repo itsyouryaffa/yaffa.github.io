@@ -6,35 +6,56 @@ author_profile: False
 ---
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    Fore more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-  -->
-  <base href="/">
-
   <meta charset="UTF-8">
+  <title>Tarot with PyScript</title>
 
-  <title>tarot</title>
+  <!-- PyScript 核心文件 -->
+  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+  <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+  <style>
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    #tarot-img {
+      margin-top: 10px;
+      max-width: 200px;
+      display: block;
+    }
+  </style>
 </head>
 <body>
-  <!-- This script installs service_worker.js to provide PWA functionality to
-       application. For more information, see:
-       https://developers.google.com/web/fundamentals/primers/service-workers -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('flutter-first-frame', function () {
-        navigator.serviceWorker.register('flutter_service_worker.js');
-      });
-    }
-  </script>
-  <script src="main.dart.js" type="application/javascript"></script>
+  <h1>🔮 Tarot Reading</h1>
+  <button id="draw-btn">抽一张牌</button>
+  <div id="result"></div>
+  <img id="tarot-img" src="" alt="Tarot Card" />
+
+  <py-script>
+import random
+from js import document
+
+tarot_cards = [
+    {"name": "The Fool - 新的开始，充满潜力", "img": "https://upload.wikimedia.org/wikipedia/en/9/90/RWS_Tarot_Fool.jpg"},
+    {"name": "The Magician - 掌握资源，创造机会", "img": "https://upload.wikimedia.org/wikipedia/en/d/de/RWS_Tarot_Magician.jpg"},
+    {"name": "The High Priestess - 直觉与潜意识", "img": "https://upload.wikimedia.org/wikipedia/en/8/88/RWS_Tarot_High_Priestess.jpg"},
+    {"name": "The Empress - 丰饶与关怀", "img": "https://upload.wikimedia.org/wikipedia/en/d/d2/RWS_Tarot_Empress.jpg"},
+    {"name": "The Emperor - 秩序与权威", "img": "https://upload.wikimedia.org/wikipedia/en/c/c3/RWS_Tarot_Emperor.jpg"},
+    {"name": "The Lovers - 选择与关系", "img": "https://upload.wikimedia.org/wikipedia/en/7/74/RWS_Tarot_Lovers.jpg"},
+    {"name": "The Chariot - 意志与胜利", "img": "https://upload.wikimedia.org/wikipedia/en/0/0b/RWS_Tarot_Chariot.jpg"},
+    {"name": "Strength - 内在的力量", "img": "https://upload.wikimedia.org/wikipedia/en/f/f5/RWS_Tarot_Strength.jpg"},
+    {"name": "The Hermit - 内省与智慧", "img": "https://upload.wikimedia.org/wikipedia/en/4/4d/RWS_Tarot_Hermit.jpg"},
+    {"name": "Wheel of Fortune - 变化与命运", "img": "https://upload.wikimedia.org/wikipedia/en/3/3c/RWS_Tarot_Wheel_of_Fortune.jpg"}
+]
+
+def draw_card(event=None):
+    card = random.choice(tarot_cards)
+    document.getElementById("result").innerText = card["name"]
+    document.getElementById("tarot-img").src = card["img"]
+
+document.getElementById("draw-btn").addEventListener("click", draw_card)
+  </py-script>
 </body>
 </html>
