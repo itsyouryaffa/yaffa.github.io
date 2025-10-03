@@ -64,13 +64,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // 先显示背面并重置旋转
       imgEl.style.transform = "rotateY(0deg) rotate(0deg)";
-      imgEl.src = "/images/back.png";
+      imgEl.src = "../images/back.png";
       resultDiv.innerText = "";
 
       // 延迟翻牌，依次播放动画
       setTimeout(()=>{
         const card = drawnCards[index];
-        imgEl.src = `/images/${card.name}.png`;
+        imgEl.src = `../images/${card.name}.png`;
         if(card.reversed === "逆位"){
           imgEl.style.transform = "rotateY(180deg) rotate(180deg)";
         } else {
