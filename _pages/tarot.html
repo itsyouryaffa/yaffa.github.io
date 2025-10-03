@@ -1,10 +1,22 @@
----
-layout: default
-title: "Tarot"
-permalink: /tarot/
-author_profile: False
----
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarot 三张牌抽牌</title>
+<style>
+/* 样式同上 */
+.container { max-width: 800px; margin: 50px auto; padding:20px; background:#fff; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.1); text-align:center; }
+h1 { color: #4a148c; }
+.cards-container { display:flex; justify-content:center; gap:20px; margin-top:30px; }
+.card-wrapper { perspective:1000px; }
+.tarot-img { width:150px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.3); transition:transform 1s; }
+.card-result { margin-top:8px; font-weight:bold; text-align:center; }
+button { padding:10px 20px; font-size:18px; background:#6a1b9a; color:white; border:none; border-radius:5px; cursor:pointer; }
+button:hover { background:#4a148c; }
+</style>
+</head>
+<body>
 <div class="container">
     <h1>🔮 三张牌牌阵抽牌</h1>
     <button id="draw-btn">抽三张牌</button>
@@ -25,18 +37,6 @@ author_profile: False
     </div>
 </div>
 
-<style>
-/* 基础样式，可直接使用之前的 CSS */
-.container { max-width: 800px; margin: 50px auto; padding:20px; background:#fff; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.1); text-align:center; }
-h1 { color: #4a148c; }
-.cards-container { display:flex; justify-content:center; gap:20px; margin-top:30px; }
-.card-wrapper { perspective:1000px; }
-.tarot-img { width:150px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.3); transition:transform 1s; }
-.card-result { margin-top:8px; font-weight:bold; text-align:center; }
-button { padding:10px 20px; font-size:18px; background:#6a1b9a; color:white; border:none; border-radius:5px; cursor:pointer; }
-button:hover { background:#4a148c; }
-</style>
-
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -56,8 +56,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const button = document.getElementById("draw-btn");
     const cardWrappers = document.querySelectorAll(".card-wrapper");
-
-    if(!button) { console.error("找不到 draw-btn"); return; }
 
     button.addEventListener("click", () => {
         let drawnCards = [];
@@ -85,3 +83,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 </script>
+
+</body>
+</html>
