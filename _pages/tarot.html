@@ -77,19 +77,19 @@ author_profile: False
 
     <div class="container">
         <h1>🔮 Classical</h1>
-        <button id="draw-btn">抽三张牌</button>
+        <button id="draw-btn">抽牌</button>
 
         <div class="cards-container" id="cards-container">
             <div class="card-wrapper">
-                <img class="tarot-img" src="../images/back.jpg" alt="card 1">
+                <img class="tarot-img" src="../images/back.jpg" alt="牌1">
                 <div class="card-result"></div>
             </div>
             <div class="card-wrapper">
-                <img class="tarot-img" src="../images/back.jpg" alt="card 2">
+                <img class="tarot-img" src="../images/back.jpg" alt="牌2">
                 <div class="card-result"></div>
             </div>
             <div class="card-wrapper">
-                <img class="tarot-img" src="../images/back.jpg" alt="card 3">
+                <img class="tarot-img" src="../images/back.jpg" alt="牌3">
                 <div class="card-result"></div>
             </div>
         </div>
@@ -138,7 +138,7 @@ author_profile: False
                     // 延迟翻牌，依次播放动画
                     setTimeout(()=>{
                         const card = drawnCards[index];
-                        imgEl.src = `/images/${card.name}.jpg`;
+                        imgEl.src = `../images/${card.name}.jpg`;
                         if(card.reversed === "逆位"){
                             imgEl.style.transform = "rotateY(180deg) rotate(180deg)";
                         } else {
