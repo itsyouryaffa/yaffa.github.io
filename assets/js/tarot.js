@@ -1,45 +1,54 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+    // Define card sets
     const majorArcana = Array.from({length:22}, (_,i)=>`m${i.toString().padStart(2,'0')}`);
     const cups = Array.from({length:14}, (_,i)=>`c${(i+1).toString().padStart(2,'0')}`);
     const coins = Array.from({length:14}, (_,i)=>`p${(i+1).toString().padStart(2,'0')}`);
     const swords = Array.from({length:14}, (_,i)=>`s${(i+1).toString().padStart(2,'0')}`);
     const wands = Array.from({length:14}, (_,i)=>`w${(i+1).toString().padStart(2,'0')}`);
 
+    // Combine all cards with type
     const allCards = [
-        ...majorArcana.map(name=>({name, type:'大阿尔克那'})),
-        ...cups.map(name=>({name, type:'圣杯'})),
-        ...coins.map(name=>({name, type:'星币'})),
-        ...swords.map(name=>({name, type:'宝剑'})),
-        ...wands.map(name=>({name, type:'权杖'}))
+        ...majorArcana.map(name=>({name, type:'Major Arcana'})),
+        ...cups.map(name=>({name, type:'Cups'})),
+        ...coins.map(name=>({name, type:'Coins'})),
+        ...swords.map(name=>({name, type:'Swords'})),
+        ...wands.map(name=>({name, type:'Wands'}))
     ];
 
     const button = document.getElementById("draw-btn");
     const cardWrappers = document.querySelectorAll(".card-wrapper");
 
     button.addEventListener("click", () => {
+
+        // Randomly draw three cards
         let drawnCards = [];
-        while(drawnCards.length < 3){
+        for(let i=0;i<3;i++){
             const card = allCards[Math.floor(Math.random()*allCards.length)];
-            if(!drawnCards.some(c=>c.name === card.name)){
-                const reversed = Math.random() < 0.5 ? "正位" : "逆位";
-                drawnCards.push({...card, reversed});
-            }
+            const reversed = Math.random() < 0.5 ? "Upright" : "Reversed";
+            drawnCards.push({...card, reversed});
         }
 
+        // Flip cards with animation
         cardWrappers.forEach((wrapper, index)=>{
             const imgEl = wrapper.querySelector(".tarot-img");
-            const resultDiv = wrapper.querySelector(".card-result");
 
+            // Reset to back image
             imgEl.style.transform = "rotateY(0deg) rotate(0deg)";
             imgEl.src = "../images/back.jpg";
-            resultDiv.innerText = "";
 
+            // Delay flip for animation effect
             setTimeout(()=>{
                 const card = drawnCards[index];
                 imgEl.src = `../images/${card.name}.jpg`;
-                imgEl.style.transform = card.reversed === "逆位" ? "rotateY(180deg) rotate(180deg)" : "rotateY(180deg) rotate(0deg)";
-                resultDiv.innerText = `${card.name} (${card.type}) - ${card.reversed}`;
-            }, index*500);
+                if(card.reversed === "Reversed"){
+                    imgEl.style.transform = "rotateY(180deg) rotate(180deg)";
+                } else {
+                    imgEl.style.transform = "rotateY(180deg) rotate(0deg)";
+                }
+                // No text display under card
+            }, index * 500); // 0.5s delay per card
         });
+
     });
 });
