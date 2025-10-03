@@ -46,22 +46,27 @@ author_profile: False
   <button id="draw-btn">抽一张牌</button>
   <div id="result">点击按钮抽牌！</div>
 
+  <!-- JavaScript 放在 body 末尾 -->
   <script>
-    // 22 张大阿尔克那塔罗牌名字
-    const tarotCards = [
-      "The Fool", "The Magician", "The High Priestess", "The Empress",
-      "The Emperor", "The Hierophant", "The Lovers", "The Chariot",
-      "Strength", "The Hermit", "Wheel of Fortune", "Justice",
-      "The Hanged Man", "Death", "Temperance", "The Devil",
-      "The Tower", "The Star", "The Moon", "The Sun",
-      "Judgement", "The World"
-    ];
+    document.addEventListener("DOMContentLoaded", function() {
+      // 22 张大阿尔克那塔罗牌名字
+      const tarotCards = [
+        "The Fool", "The Magician", "The High Priestess", "The Empress",
+        "The Emperor", "The Hierophant", "The Lovers", "The Chariot",
+        "Strength", "The Hermit", "Wheel of Fortune", "Justice",
+        "The Hanged Man", "Death", "Temperance", "The Devil",
+        "The Tower", "The Star", "The Moon", "The Sun",
+        "Judgement", "The World"
+      ];
 
-    // 点击按钮随机抽一张牌
-    document.getElementById("draw-btn").addEventListener("click", () => {
-      const randomIndex = Math.floor(Math.random() * tarotCards.length);
-      const card = tarotCards[randomIndex];
-      document.getElementById("result").innerText = card;
+      const button = document.getElementById("draw-btn");
+      const resultDiv = document.getElementById("result");
+
+      button.addEventListener("click", () => {
+        const randomIndex = Math.floor(Math.random() * tarotCards.length);
+        const card = tarotCards[randomIndex];
+        resultDiv.innerText = card;
+      });
     });
   </script>
 </body>
