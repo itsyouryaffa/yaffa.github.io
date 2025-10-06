@@ -50,26 +50,51 @@ button { padding: 10px 20px; font-size: 18px; background: #6a1b9a; color: white;
 button:hover { background: #4a148c; }
 
 .v-cards-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    position: relative;
-    height: 260px;
-    margin-top: 30px;
+   position: relative;
+   width: 100%;
+   max-width: 700px;
+   aspect-ratio: 7 / 4; /* 保持合适的比例 */
+   margin: 0 auto;
+   margin-top: 40px;
 }
+
 .v-card {
-    position: relative;
-    width: 150px;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+   position: absolute;
+   width: 18%;
+   max-width: 130px;
+   aspect-ratio: 3 / 4;
+   left: 50%;
+   transform: translateX(-50%);
 }
-.v-card-1 { transform: translateY(60px) translateX(-80px) rotate(-25deg); z-index: 1; }
-.v-card-2 { transform: translateY(30px) translateX(-40px) rotate(-12deg); z-index: 2; }
-.v-card-3 { transform: translateY(0px) rotate(0deg); z-index: 3; }
-.v-card-4 { transform: translateY(30px) translateX(40px) rotate(12deg); z-index: 2; }
-.v-card-5 { transform: translateY(60px) translateX(80px) rotate(25deg); z-index: 1; }
+
+.v-card img {
+   width: 100%;
+   height: auto;
+   border-radius: 8px;
+   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.v-card-1 {
+   top: 70%;
+}
+
+.v-card-2 {
+   top: 45%;
+   left: 30%;
+}
+
+.v-card-3 {
+   top: 25%;
+}
+
+.v-card-4 {
+   top: 45%;
+   left: 70%;
+}
+
+.v-card-5 {
+   top: 15%;
+}
 </style>
 
 <script src="../assets/js/tarot.js"></script>
