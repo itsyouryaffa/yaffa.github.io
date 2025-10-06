@@ -1,13 +1,13 @@
 main:
 
-  - title: "Python"
-    url: /Python/
+  # - title: "Python"
+  #   url: /Python/
     
-  - title: "R"
-    url: /R/
+  # - title: "R"
+  #   url: /R/
     
-  - title: "Tableau"
-    url: /Tableau/
+  # - title: "Tableau"
+  #   url: /Tableau/
     
   - title: "Chat Now!"
     url: /chat/
