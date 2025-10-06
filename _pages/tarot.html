@@ -7,7 +7,6 @@ author_profile: False
 <div class="container">
     <h1>🔮</h1>
     <button id="draw-btn">✨</button>
-
     <div class="cards-container" id="cards-container">
         <div class="card-wrapper">
             <img class="tarot-img" src="../images/back.jpg" alt="Card 1">
@@ -17,6 +16,18 @@ author_profile: False
         </div>
         <div class="card-wrapper">
             <img class="tarot-img" src="../images/back.jpg" alt="Card 3">
+        </div>
+    </div>
+
+    <div style="margin-top:60px;">
+        <h2>Either/Or</h2>
+        <button id="draw-v-btn">🌟</button>
+        <div class="v-cards-container" id="v-cards-container">
+            <div class="v-card v-card-1"><img class="tarot-img" src="../images/back.jpg" alt="Card 1"></div>
+            <div class="v-card v-card-2"><img class="tarot-img" src="../images/back.jpg" alt="Card 2"></div>
+            <div class="v-card v-card-3"><img class="tarot-img" src="../images/back.jpg" alt="Card 3"></div>
+            <div class="v-card v-card-4"><img class="tarot-img" src="../images/back.jpg" alt="Card 4"></div>
+            <div class="v-card v-card-5"><img class="tarot-img" src="../images/back.jpg" alt="Card 5"></div>
         </div>
     </div>
 </div>
@@ -37,7 +48,29 @@ h1 { color: #4a148c; }
 .tarot-img { width: 150px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 1s; }
 button { padding: 10px 20px; font-size: 18px; background: #6a1b9a; color: white; border: none; border-radius: 5px; cursor: pointer; }
 button:hover { background: #4a148c; }
-</style>
 
+.v-cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 0;
+    margin-top: 30px;
+    position: relative;
+    height: 220px;
+}
+.v-card {
+    position: relative;
+    width: 150px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.v-card-1 { transform: translateY(40px) translateX(-60px) rotate(-20deg); z-index: 1; }
+.v-card-2 { transform: translateY(20px) translateX(-30px) rotate(-10deg); z-index: 2; }
+.v-card-3 { transform: translateY(0px) rotate(0deg); z-index: 3; }
+.v-card-4 { transform: translateY(20px) translateX(30px) rotate(10deg); z-index: 2; }
+.v-card-5 { transform: translateY(40px) translateX(60px) rotate(20deg); z-index: 1; }
+</style>
 
 <script src="../assets/js/tarot.js"></script>
