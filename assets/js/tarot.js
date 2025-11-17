@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Card definitions (same as your 3-card logic)
+    // Card definitions
     const majorArcana = Array.from({length:22}, (_,i)=>`m${i.toString().padStart(2,'0')}`);
     const cups = Array.from({length:14}, (_,i)=>`c${(i+1).toString().padStart(2,'0')}`);
     const coins = Array.from({length:14}, (_,i)=>`p${(i+1).toString().padStart(2,'0')}`);
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         ...wands.map(name=>({name, type:'Wands'}))
     ];
 
-    // 3-card spread logic (unchanged)
+    // 3-card spread (unchanged)
     const button = document.getElementById("draw-btn");
     const cardWrappers = document.querySelectorAll(".card-wrapper");
     if (button) {
@@ -44,12 +44,11 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // 5-card V-shape grid logic (unchanged)
+    // 5-card V-shape (unchanged)
     const vButton = document.getElementById("draw-v-btn");
     const vCardWrappers = document.querySelectorAll(".v-card");
     if (vButton) {
         vButton.addEventListener("click", () => {
-            // Draw 5 unique cards
             let deck = [...allCards];
             let drawnCards = [];
             for(let i=0;i<5;i++){
@@ -77,42 +76,13 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // 7-card shape grid logic (one bottom card + three branches)
+    // 7-card spread (controls removed: all v7 cards become selectable after draw)
     const v7Button = document.getElementById("draw-v7-btn");
     const v7CardWrappers = Array.from(document.querySelectorAll(".v7-card"));
-
-    // Branch controls (Left/Center/Right)
-    const branchButtons = Array.from(document.querySelectorAll('.option-btn'));
-    let activeBranch = 'center';
     let currentSelected7 = null;
-    const selectedElem = document.getElementById('selected');
-
-    function updateBranch7(branch) {
-        activeBranch = branch;
-        branchButtons.forEach(b => b.classList.toggle('active', b.dataset.branch === branch));
-        v7CardWrappers.forEach(c => {
-            if (c.dataset.branch === branch) {
-                c.classList.remove('dim');
-                c.classList.add('selectable');
-            } else {
-                c.classList.add('dim');
-                c.classList.remove('selectable');
-                c.classList.remove('selected');
-            }
-        });
-        currentSelected7 = null;
-        if (selectedElem) selectedElem.textContent = 'none';
-    }
-
-    if (branchButtons.length) {
-        branchButtons.forEach(b => b.addEventListener('click', () => updateBranch7(b.dataset.branch)));
-    }
-    // initialize branch
-    updateBranch7(activeBranch);
 
     if (v7Button) {
         v7Button.addEventListener("click", () => {
-            // draw unique cards equal to v7 positions
             let deck = [...allCards];
             const drawCount = Math.min(v7CardWrappers.length, deck.length);
             let drawnCards = [];
@@ -125,6 +95,9 @@ document.addEventListener("DOMContentLoaded", function() {
             v7CardWrappers.forEach((wrapper, index) => {
                 const imgEl = wrapper.querySelector(".tarot-img");
                 if (!imgEl) return;
+                // reset classes and visuals
+                wrapper.classList.remove('selected');
+                wrapper.classList.add('selectable');
                 imgEl.style.transform = "rotateY(0deg) rotate(0deg)";
                 imgEl.src = "../images/back.jpg";
                 setTimeout(() => {
@@ -140,14 +113,14 @@ document.addEventListener("DOMContentLoaded", function() {
                     wrapper.dataset.cardOrientation = card.reversed;
                 }, index * 500);
             });
-
-            // reset branch selection after draw
-            updateBranch7(activeBranch);
+            currentSelected7 = null;
         });
     }
 
-    // Selection behavior for 7-card spread
+    // Selection behavior for 7-card spread (all v7 cards selectable)
     v7CardWrappers.forEach(c => {
+        // ensure initially selectable so user can click before draw if desired
+        c.classList.add('selectable');
         c.addEventListener('click', () => {
             if (!c.classList.contains('selectable')) return;
             if (currentSelected7 && currentSelected7 !== c) {
@@ -157,19 +130,10 @@ document.addEventListener("DOMContentLoaded", function() {
             if (willSelect) {
                 c.classList.add('selected');
                 currentSelected7 = c;
-                if (selectedElem) selectedElem.textContent = c.dataset.cardName || c.dataset.label || c.dataset.label || 'card';
             } else {
                 c.classList.remove('selected');
                 currentSelected7 = null;
-                if (selectedElem) selectedElem.textContent = 'none';
             }
         });
-    });
-
-    // Keyboard shortcuts for branch selection: 1 = left, 2 = center, 3 = right
-    window.addEventListener('keydown', (ev) => {
-        if (ev.key === '1') updateBranch7('left');
-        if (ev.key === '2') updateBranch7('center');
-        if (ev.key === '3') updateBranch7('right');
     });
 });
