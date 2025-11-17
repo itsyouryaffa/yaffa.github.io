@@ -4,6 +4,7 @@ title: "Tarot"
 permalink: /tarot/
 author_profile: False
 ---
+
 <div class="container">
     <h1>🔮</h1>
     <button id="draw-btn">✨</button>
@@ -20,7 +21,7 @@ author_profile: False
     </div>
 
     <div style="margin-top:60px;">
-        <h2>Either/Or</h2>
+        <h2>Either/Or (5-card)</h2>
         <button id="draw-v-btn">🌟</button>
         <div class="v-cards-container" id="v-cards-container">
             <div class="v-card v-card-1"><img class="tarot-img" src="../images/back.jpg" alt="Card 1"></div>
@@ -29,6 +30,34 @@ author_profile: False
             <div class="v-card v-card-4"><img class="tarot-img" src="../images/back.jpg" alt="Card 4"></div>
             <div class="v-card v-card-5"><img class="tarot-img" src="../images/back.jpg" alt="Card 5"></div>
         </div>
+    </div>
+
+    <div style="margin-top:60px;">
+        <h2>One out of Three</h2>
+
+        <div class="controls" role="group" aria-label="Choose branch">
+          <button class="option-btn" data-branch="left">Left</button>
+          <button class="option-btn active" data-branch="center">Center</button>
+          <button class="option-btn" data-branch="right">Right</button>
+        </div>
+
+        <button id="draw-v7-btn">🔮🔮🔮</button>
+        <div class="v7-cards-container" id="v7-cards-container">
+            <!-- left branch (top, mid) -->
+            <div class="v7-card v7-card-5" data-branch="left" data-label="Left Top"><img class="tarot-img" src="../images/back.jpg" alt="Left Top"></div>
+            <div class="v7-card v7-card-4" data-branch="left" data-label="Left Mid"><img class="tarot-img" src="../images/back.jpg" alt="Left Mid"></div>
+
+            <!-- center branch (top, mid, bottom) -->
+            <div class="v7-card v7-card-3" data-branch="center" data-label="Center Top"><img class="tarot-img" src="../images/back.jpg" alt="Center Top"></div>
+            <div class="v7-card v7-card-2" data-branch="center" data-label="Center Mid"><img class="tarot-img" src="../images/back.jpg" alt="Center Mid"></div>
+            <div class="v7-card v7-card-1" data-branch="center" data-label="Bottom Center"><img class="tarot-img" src="../images/back.jpg" alt="Bottom Center"></div>
+
+            <!-- right branch (top, mid) -->
+            <div class="v7-card v7-card-6" data-branch="right" data-label="Right Mid"><img class="tarot-img" src="../images/back.jpg" alt="Right Mid"></div>
+            <div class="v7-card v7-card-7" data-branch="right" data-label="Right Top"><img class="tarot-img" src="../images/back.jpg" alt="Right Top"></div>
+        </div>
+
+        <div class="result" id="result">Selected: <span id="selected">none</span></div>
     </div>
 </div>
 
@@ -49,67 +78,82 @@ h1 { color: #4a148c; }
 button { padding: 10px 20px; font-size: 18px; background: #6a1b9a; color: white; border: none; border-radius: 5px; cursor: pointer; }
 button:hover { background: #4a148c; }
 
+/* 5-card V-shape (unchanged) */
 .v-cards-container {
-
     position: relative;
-
     width: 100%;
-
     max-width: 760px;
-
     height: 700px;       
-
     margin: 0 auto;
-
     margin-top: 30px;
-
 }
-
 .v-card {
-
     position: absolute;
-
     width: 16%;
-
     max-width: 140px;
-
-    /* aspect-ratio: 3 / 4; */
-
     left: 50%;
-
     top: 50%;
-
     transform: translate(-50%, -50%);
-
     transition: all 0.35s ease;
-
 }
-
 .v-card img {
-
     width: 100%;
-
     height: 100%;
-
     object-fit: cover;
-
     border-radius: 8px;
-
     box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-
 }
-
-
 .v-card-3 { left: 22%; top: 12%; z-index: 1; transform: translate(-50%, -50%); } /* top-left */
-
 .v-card-5 { left: 78%; top: 12%; z-index: 1; transform: translate(-50%, -50%); }  /* top-right */
-
 .v-card-2 { left: 34%; top: 44%; z-index: 2; transform: translate(-50%, -50%); } /* mid-left */
-
 .v-card-4 { left: 66%; top: 44%; z-index: 2; transform: translate(-50%, -50%); }  /* mid-right */
-
 .v-card-1 { left: 50%; top: 78%; z-index: 3; transform: translate(-50%, -50%); }   /* bottom-center */
- 
+
+/* Controls and selection styling for 7-card */
+.controls { text-align: center; margin: 12px 0; }
+.option-btn {
+  margin: 0 8px; padding: 8px 12px; border-radius: 6px;
+  border: 1px solid #8e24aa; background: #f3e5f5; color: #4a148c;
+  cursor: pointer; font-weight: 600;
+}
+.option-btn.active { background:#6a1b9a; color: #fff; border-color: #4a148c; }
+.v7-card.dim { opacity: 0.18; filter: grayscale(60%); pointer-events: none; transform: translate(-50%,-50%) scale(0.98); }
+.v7-card.selectable { cursor: pointer; transition: transform 0.2s ease; }
+.v7-card.selectable:hover { transform: translate(-50%,-50%) scale(1.05); z-index: 9999; }
+.v7-card.selected { outline: 4px solid rgba(106,27,154,0.8); transform: translate(-50%,-50%) scale(1.08); z-index: 10000; box-shadow: 0 12px 30px rgba(74,20,140,0.35); }
+.result { margin-top: 12px; font-size: 15px; color: #333; font-weight: 600; }
+
+/* 7-card layout (one bottom center + center column + left and right columns) */
+.v7-cards-container {
+    position: relative;
+    width: 100%;
+    max-width: 760px;
+    height: 700px;
+    margin: 0 auto;
+    margin-top: 18px;
+}
+.v7-card {
+    position: absolute;
+    width: 14%;
+    max-width: 140px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.35s ease;
+}
+.v7-card img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; box-shadow: 0 6px 14px rgba(0,0,0,0.25); }
+
+/* positions */
+.v7-card-5 { left: 18%; top: 12%; z-index: 1; } /* left top */
+.v7-card-4 { left: 28%; top: 34%; z-index: 2; } /* left mid */
+
+.v7-card-3 { left: 50%; top: 12%; z-index: 1; } /* center top */
+.v7-card-2 { left: 50%; top: 38%; z-index: 2; } /* center mid */
+.v7-card-1 { left: 50%; top: 76%; z-index: 3; } /* bottom center */
+
+.v7-card-6 { left: 72%; top: 34%; z-index: 2; } /* right mid */
+.v7-card-7 { left: 82%; top: 12%; z-index: 1; } /* right top */
+
 </style>
 
 <script src="../assets/js/tarot.js"></script>
