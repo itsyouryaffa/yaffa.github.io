@@ -41,15 +41,9 @@ author_profile: False
     </div>
 
     <div style="margin-top:60px;">
-        <h2>Either/Or (7-card) — one bottom card, three branches</h2>
+        <h2>One out of Three</h2>
 
-        <div class="controls" role="group" aria-label="Choose branch">
-          <button class="option-btn" data-branch="left">Left</button>
-          <button class="option-btn active" data-branch="center">Center</button>
-          <button class="option-btn" data-branch="right">Right</button>
-        </div>
-
-        <button id="draw-v7-btn">🔮 Draw 7</button>
+        <button id="draw-v7-btn">🔮🃏</button>
         <div class="v7-cards-container" id="v7-cards-container">
             <!-- left branch -->
             <div class="v7-card v7-card-5" data-branch="left" data-label="Left Top"><img class="tarot-img" src="../images/back.jpg" alt="Left Top"></div>
@@ -64,18 +58,16 @@ author_profile: False
             <div class="v7-card v7-card-6" data-branch="right" data-label="Right Mid"><img class="tarot-img" src="../images/back.jpg" alt="Right Mid"></div>
             <div class="v7-card v7-card-7" data-branch="right" data-label="Right Top"><img class="tarot-img" src="../images/back.jpg" alt="Right Top"></div>
         </div>
-
-        <div class="result" id="result">Selected: <span id="selected">none</span></div>
     </div>
 </div>
 
 <style>
 .container {
-    max-width: 800px; 
-    margin: 50px auto; 
+    max-width: 800px;
+    margin: 50px auto;
     padding: 20px;
-    background: #fff; 
-    border-radius: 8px; 
+    background: #fff;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     text-align: center;
 }
@@ -117,19 +109,10 @@ button:hover { background: #4a148c; }
 .v-card-4 { left: 66%; top: 44%; z-index: 2; }  /* mid-right */
 .v-card-1 { left: 50%; top: 78%; z-index: 3; }   /* bottom-center */
 
-/* Controls and selection styling for 7-card */
-.controls { text-align: center; margin: 12px 0; }
-.option-btn {
-  margin: 0 8px; padding: 8px 12px; border-radius: 6px;
-  border: 1px solid #8e24aa; background: #f3e5f5; color: #4a148c;
-  cursor: pointer; font-weight: 600;
-}
-.option-btn.active { background:#6a1b9a; color: #fff; border-color: #4a148c; }
-.v7-card.dim { opacity: 0.18; filter: grayscale(60%); pointer-events: none; transform: translate(-50%,-50%) scale(0.98); }
+/* 7-card selection styling (controls removed) */
 .v7-card.selectable { cursor: pointer; transition: transform 0.2s ease; }
 .v7-card.selectable:hover { transform: translate(-50%,-50%) scale(1.05); z-index: 9999; }
 .v7-card.selected { outline: 4px solid rgba(106,27,154,0.8); transform: translate(-50%,-50%) scale(1.08); z-index: 10000; box-shadow: 0 12px 30px rgba(74,20,140,0.35); }
-.result { margin-top: 12px; font-size: 15px; color: #333; font-weight: 600; }
 
 /* 7-card layout */
 .v7-cards-container {
