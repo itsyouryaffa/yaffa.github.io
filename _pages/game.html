@@ -254,7 +254,7 @@ class Coin {
         this.y = CONFIG.GROUND_Y - 40 - Math.random() * 150;
         this.width = 20;
         this.height = 20;
-        this.speed = 2;
+        this.speed = 3;
         this.active = true;
     }
 
@@ -343,37 +343,42 @@ class Game {
     }
 
     checkCollisions() {
-        this.bullets.forEach(bullet => {
-            this.monsters.forEach(monster => {
-                if (bullet.active && monster.active && bullet.collidesWith(monster)) {
-                    bullet.active = false;
-                    if (monster.takeDamage()) {
-                        monster.active = false;
-                        this.score++;
-                        if (this.score > this.highScore) {
-                            this.highScore = this.score;
-                            localStorage.setItem('highScore', this.highScore.toString());
-                        }
+    this.bullets.forEach(bullet => {
+        this.monsters.forEach(monster => {
+            if (bullet.active && monster.active && bullet.collidesWith(monster)) {
+                bullet.active = false;
+                if (monster.takeDamage()) {
+                    monster.active = false;
+                    this.score++;
+                    if (this.score > this.highScore) {
+                        this.highScore = this.score;
+                        localStorage.setItem('highScore', this.highScore.toString());
                     }
                 }
-            });
-        });
-
-        this.monsters.forEach((monster, i) => {
-            if (monster.active && monster.collidesWith(this.player)) {
-                this.monsters.splice(i, 1);
-                if (this.player.takeDamage()) {
-                    this.gameOver = true;
-                }
             }
         });
+    });
 
-        this.coins.forEach((coin, i) => {
-            if (coin.active && coin.collidesWith(this.player)) {
-                this.coins.splice(i, 1);
-                this.coinsCollected++;
+    this.monsters.forEach((monster, i) => {
+        if (monster.active && monster.collidesWith(this.player)) {
+            this.monsters.splice(i, 1);
+            if (this.player.takeDamage()) {
+                this.gameOver = true;
             }
-        });
+        }
+    });
+
+    this.coins.forEach((coin, i) => {
+        if (coin.active && coin.collidesWith(this.player)) {
+            this.coins.splice(i, 1);
+            this.coinsCollected++;
+            this.score += 0.5;  // Add 0.5 points per coin
+            if (this.score > this.highScore) {
+                this.highScore = this.score;
+                localStorage.setItem('highScore', this.highScore.toString());
+            }
+        }
+    });
     }
 
     draw() {
@@ -393,37 +398,37 @@ class Game {
     }
 
     drawUI() {
-        ctx.fillStyle = "rgba(0,0,0,0.7)";
-        ctx.fillRect(10, 10, 180, 95);
+    ctx.fillStyle = "rgba(0,0,0,0.7)";
+    ctx.fillRect(10, 10, 180, 95);
+    ctx.fillStyle = "white";
+    ctx.font = "bold 20px Arial";
+    ctx.fillText(`Score: ${this.score.toFixed(1)}`, 20, 35);  // Show 1 decimal place
+    ctx.font = "14px Arial";
+    ctx.fillText(`High Score: ${this.highScore.toFixed(1)}`, 20, 55);
+    ctx.fillText(`Coins: ${this.coinsCollected}`, 20, 75);
+
+    ctx.font = "24px Arial";
+    for (let i = 0; i < this.player.maxHp; i++) {
+        ctx.fillText(i < this.player.hp ? "❤" : "🖤", 20 + i * 30, 95);
+    }
+
+    if (this.gameOver) {
+        ctx.fillStyle = "rgba(0,0,0,0.8)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
         ctx.fillStyle = "white";
-        ctx.font = "bold 20px Arial";
-        ctx.fillText(`Score: ${this.score}`, 20, 35);
-        ctx.font = "14px Arial";
-        ctx.fillText(`High Score: ${this.highScore}`, 20, 55);
-        ctx.fillText(`Coins: ${this.coinsCollected}`, 20, 75);
+        ctx.font = "bold 48px Arial";
+        ctx.textAlign = "center";
+        ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2 - 60);
 
         ctx.font = "24px Arial";
-        for (let i = 0; i < this.player.maxHp; i++) {
-            ctx.fillText(i < this.player.hp ? "❤" : "🖤", 20 + i * 30, 95);
-        }
+        ctx.fillText(`Final Score: ${this.score.toFixed(1)}`, canvas.width / 2, canvas.height / 2 - 10);
+        ctx.fillText(`Coins: ${this.coinsCollected}`, canvas.width / 2, canvas.height / 2 + 30);
 
-        if (this.gameOver) {
-            ctx.fillStyle = "rgba(0,0,0,0.8)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            ctx.fillStyle = "white";
-            ctx.font = "bold 48px Arial";
-            ctx.textAlign = "center";
-            ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2 - 60);
-            
-            ctx.font = "24px Arial";
-            ctx.fillText(`Final Score: ${this.score}`, canvas.width / 2, canvas.height / 2 - 10);
-            ctx.fillText(`Coins: ${this.coinsCollected}`, canvas.width / 2, canvas.height / 2 + 30);
-            
-            ctx.font = "18px Arial";
-            ctx.fillText("Press R to Restart", canvas.width / 2, canvas.height / 2 + 70);
-            
-            ctx.textAlign = "left";
+        ctx.font = "18px Arial";
+        ctx.fillText("Press R to Restart", canvas.width / 2, canvas.height / 2 + 70);
+
+        ctx.textAlign = "left";
         }
     }
 }
