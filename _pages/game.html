@@ -51,21 +51,19 @@ const ctx = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 400;
 
-// Update CONFIG
 const CONFIG = {
     GRAVITY: 0.6,
     GROUND_Y: 350,
     PLAYER_JUMP_POWER: -12,
-    PLAYER_SPEED: 5,  // reduced horizontal movement speed
+    PLAYER_SPEED: 5,
     BULLET_SPEED: 8,
     BULLET_COOLDOWN: 200,
     MONSTER_BASE_SPEED: 2,
     MONSTER_SPAWN_BASE_RATE: 100,
-    DIFFICULTY_SCALE: 600
+    DIFFICULTY_SCALE: 600,
+    COIN_SPAWN_RATE: 120
 };
 
-
-// Update Player class
 class Player {
     constructor() {
         this.reset();
@@ -76,7 +74,7 @@ class Player {
         this.y = 300;
         this.width = 40;
         this.height = 40;
-        this.dx = 0;  // no auto-run
+        this.dx = 0;
         this.dy = 0;
         this.onGround = true;
         this.hp = 5;
@@ -85,27 +83,21 @@ class Player {
         this.invulnerable = false;
         this.invulnerableTimer = 0;
     }
-    
+
     update() {
-        // Apply horizontal movement
         this.x += this.dx;
-    
-        // Keep player on screen
         if (this.x < 0) this.x = 0;
         if (this.x > canvas.width - this.width) this.x = canvas.width - this.width;
-    
-        // Apply gravity
+
         this.dy += CONFIG.GRAVITY;
         this.y += this.dy;
-    
-        // Ground collision
+
         if (this.y + this.height >= CONFIG.GROUND_Y) {
             this.y = CONFIG.GROUND_Y - this.height;
             this.dy = 0;
             this.onGround = true;
         }
-    
-        // Update invulnerability
+
         if (this.invulnerable) {
             this.invulnerableTimer--;
             if (this.invulnerableTimer <= 0) {
@@ -113,17 +105,17 @@ class Player {
             }
         }
     }
-    
+
     moveLeft() {
         this.dx = -CONFIG.PLAYER_SPEED;
     }
-    
+
     moveRight() {
         this.dx = CONFIG.PLAYER_SPEED;
     }
-    
+
     stopMoving() {
-        this.dx = 0;  // stop completely instead of auto-run
+        this.dx = 0;
     }
 
     jump() {
@@ -167,7 +159,6 @@ class Player {
     }
 }
 
-// Bullet class
 class Bullet {
     constructor(x, y) {
         this.x = x;
@@ -200,7 +191,6 @@ class Bullet {
     }
 }
 
-// Monster class
 class Monster {
     constructor(difficultyTimer) {
         this.x = canvas.width;
@@ -211,7 +201,7 @@ class Monster {
         this.hp = this.maxHp;
         this.speed = CONFIG.MONSTER_BASE_SPEED + Math.min(difficultyTimer / CONFIG.DIFFICULTY_SCALE, 3);
         this.active = true;
-        this.hue = Math.random() * 60; // Red to orange hue
+        this.hue = Math.random() * 60;
     }
 
     update() {
@@ -227,11 +217,9 @@ class Monster {
     }
 
     draw() {
-        // Monster body
         ctx.fillStyle = `hsl(${this.hue}, 80%, 50%)`;
         ctx.fillRect(this.x, this.y, this.width, this.height);
         
-        // Eyes
         ctx.fillStyle = "white";
         ctx.fillRect(this.x + 8, this.y + 10, 8, 8);
         ctx.fillRect(this.x + 24, this.y + 10, 8, 8);
@@ -239,7 +227,6 @@ class Monster {
         ctx.fillRect(this.x + 11, this.y + 13, 3, 3);
         ctx.fillRect(this.x + 27, this.y + 13, 3, 3);
 
-        // HP bar
         const hpBarWidth = 36;
         const hpBarHeight = 4;
         const hpPercentage = this.hp / this.maxHp;
@@ -259,7 +246,43 @@ class Monster {
     }
 }
 
-// Game state
+class Coin {
+    constructor() {
+        this.x = canvas.width;
+        this.y = CONFIG.GROUND_Y - 40 - Math.random() * 150;
+        this.width = 20;
+        this.height = 20;
+        this.speed = 2;
+        this.active = true;
+    }
+
+    update() {
+        this.x -= this.speed;
+        if (this.x + this.width < 0) {
+            this.active = false;
+        }
+    }
+
+    draw() {
+        ctx.fillStyle = "#FFD700";
+        ctx.beginPath();
+        ctx.arc(this.x + this.width/2, this.y + this.height/2, this.width/2, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = "#FFF8DC";
+        ctx.beginPath();
+        ctx.arc(this.x + this.width/2 - 3, this.y + this.height/2 - 3, 4, 0, Math.PI * 2);
+        ctx.fill();
+    }
+
+    collidesWith(player) {
+        return player.x < this.x + this.width &&
+               player.x + player.width > this.x &&
+               player.y < this.y + this.height &&
+               player.y + player.height > this.y;
+    }
+}
+
 class Game {
     constructor() {
         this.reset();
@@ -269,9 +292,12 @@ class Game {
         this.player = new Player();
         this.bullets = [];
         this.monsters = [];
+        this.coins = [];
         this.score = 0;
+        this.coinsCollected = 0;
         this.gameOver = false;
         this.monsterSpawnTimer = 0;
+        this.coinSpawnTimer = 0;
         this.difficultyTimer = 0;
         this.highScore = parseInt(localStorage.getItem('highScore') || '0');
     }
@@ -279,24 +305,20 @@ class Game {
     update() {
         if (this.gameOver) return;
 
-        // Update player
         this.player.update();
 
-        // Update bullets
         this.bullets = this.bullets.filter(b => b.active);
         this.bullets.forEach(b => b.update());
 
-        // Update monsters
         this.monsters = this.monsters.filter(m => m.active);
         this.monsters.forEach(m => m.update());
 
-        // Spawn monsters
+        this.coins = this.coins.filter(c => c.active);
+        this.coins.forEach(c => c.update());
+
         this.spawnMonster();
-
-        // Check collisions
+        this.spawnCoin();
         this.checkCollisions();
-
-        // Increase difficulty
         this.difficultyTimer++;
     }
 
@@ -310,8 +332,15 @@ class Game {
         }
     }
 
+    spawnCoin() {
+        this.coinSpawnTimer++;
+        if (this.coinSpawnTimer > CONFIG.COIN_SPAWN_RATE) {
+            this.coins.push(new Coin());
+            this.coinSpawnTimer = 0;
+        }
+    }
+
     checkCollisions() {
-        // Bullet vs Monster
         this.bullets.forEach(bullet => {
             this.monsters.forEach(monster => {
                 if (bullet.active && monster.active && bullet.collidesWith(monster)) {
@@ -328,7 +357,6 @@ class Game {
             });
         });
 
-        // Player vs Monster
         this.monsters.forEach((monster, i) => {
             if (monster.active && monster.collidesWith(this.player)) {
                 this.monsters.splice(i, 1);
@@ -337,44 +365,46 @@ class Game {
                 }
             }
         });
+
+        this.coins.forEach((coin, i) => {
+            if (coin.active && coin.collidesWith(this.player)) {
+                this.coins.splice(i, 1);
+                this.coinsCollected++;
+            }
+        });
     }
 
     draw() {
-        // Clear canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Draw ground
         ctx.fillStyle = "#2C3E50";
         ctx.fillRect(0, CONFIG.GROUND_Y, canvas.width, canvas.height - CONFIG.GROUND_Y);
         ctx.fillStyle = "#27AE60";
         ctx.fillRect(0, CONFIG.GROUND_Y, canvas.width, 5);
 
-        // Draw game objects
         this.player.draw();
         this.bullets.forEach(b => b.draw());
         this.monsters.forEach(m => m.draw());
+        this.coins.forEach(c => c.draw());
 
-        // Draw UI
         this.drawUI();
     }
 
     drawUI() {
-        // Score
         ctx.fillStyle = "rgba(0,0,0,0.7)";
-        ctx.fillRect(10, 10, 180, 70);
+        ctx.fillRect(10, 10, 180, 95);
         ctx.fillStyle = "white";
         ctx.font = "bold 20px Arial";
         ctx.fillText(`Score: ${this.score}`, 20, 35);
         ctx.font = "14px Arial";
         ctx.fillText(`High Score: ${this.highScore}`, 20, 55);
+        ctx.fillText(`Coins: ${this.coinsCollected}`, 20, 75);
 
-        // HP hearts
         ctx.font = "24px Arial";
         for (let i = 0; i < this.player.maxHp; i++) {
-            ctx.fillText(i < this.player.hp ? "❤" : "🖤", 20 + i * 30, 75);
+            ctx.fillText(i < this.player.hp ? "❤" : "🖤", 20 + i * 30, 95);
         }
 
-        // Game Over
         if (this.gameOver) {
             ctx.fillStyle = "rgba(0,0,0,0.8)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -382,25 +412,25 @@ class Game {
             ctx.fillStyle = "white";
             ctx.font = "bold 48px Arial";
             ctx.textAlign = "center";
-            ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2 - 40);
+            ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2 - 60);
             
             ctx.font = "24px Arial";
-            ctx.fillText(`Final Score: ${this.score}`, canvas.width / 2, canvas.height / 2 + 10);
+            ctx.fillText(`Final Score: ${this.score}`, canvas.width / 2, canvas.height / 2 - 10);
+            ctx.fillText(`Coins: ${this.coinsCollected}`, canvas.width / 2, canvas.height / 2 + 30);
             
             ctx.font = "18px Arial";
-            ctx.fillText("Press R to Restart", canvas.width / 2, canvas.height / 2 + 50);
+            ctx.fillText("Press R to Restart", canvas.width / 2, canvas.height / 2 + 70);
             
             ctx.textAlign = "left";
         }
     }
 }
 
-// Input handling
 const keys = {};
 document.addEventListener("keydown", (e) => {
     keys[e.code] = true;
     
-    if (e.code === "KeyW") {  // Changed from "Space" to "KeyW"
+    if (e.code === "KeyW") {
         e.preventDefault();
         game.player.jump();
     }
@@ -410,17 +440,13 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-
 document.addEventListener("keyup", (e) => {
     keys[e.code] = false;
 });
 
-// Game instance
 const game = new Game();
 
-// Game loop
 function gameLoop() {
-    // Handle continuous inputs
     if (keys["KeyA"]) {
         game.player.moveLeft();
     } else if (keys["KeyD"]) {
@@ -438,7 +464,6 @@ function gameLoop() {
     
     requestAnimationFrame(gameLoop);
 }
-
 
 gameLoop();
 </script>
