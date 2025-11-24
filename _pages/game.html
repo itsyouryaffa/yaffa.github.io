@@ -28,21 +28,22 @@ author_profile: False
         box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
     #instructions {
-        position: absolute;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: white;
-        background: rgba(0,0,0,0.7);
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-size: 14px;
+    position: absolute;
+    top: 120px;  /* Moved down to avoid banner */
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background: rgba(0,0,0,0.7);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 100;  /* Ensure it's above other elements */
     }
 </style>
 </head>
 <body>
 
-<div id="instructions"><br /><br />A/D: Move | W: Jump | J: Shoot | R: Restart</div>
+<div id="instructions">A/D: Move | W: Jump | J: Shoot | R: Restart</div>
 <canvas id="game"></canvas>
 
 <script>
