@@ -4,12 +4,13 @@ title: "Game"
 permalink: /game/
 author_profile: False
 ---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Square Ghost Game</title>
+<title>Run & Shoot Game</title>
 <style>
     body {
         margin: 0;
@@ -26,7 +27,7 @@ author_profile: False
         background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%);
         box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
-    #instructions {
+   #instructions {
     position: absolute;
     top: 120px;  /* Moved down to avoid banner */
     left: 50%;
@@ -84,7 +85,6 @@ class Player {
         this.lastShot = 0;
         this.invulnerable = false;
         this.invulnerableTimer = 0;
-        this.jumpsRemaining = 2;  // Allow 2 jumps
     }
 
     update() {
@@ -99,9 +99,6 @@ class Player {
             this.y = CONFIG.GROUND_Y - this.height;
             this.dy = 0;
             this.onGround = true;
-            this.jumpsRemaining = 2;  // Reset jumps when landing
-        } else {
-            this.onGround = false;
         }
 
         if (this.invulnerable) {
@@ -125,9 +122,8 @@ class Player {
     }
 
     jump() {
-        if (this.jumpsRemaining > 0) {
+        if (this.onGround) {
             this.dy = CONFIG.PLAYER_JUMP_POWER;
-            this.jumpsRemaining--;
             this.onGround = false;
         }
     }
@@ -163,12 +159,6 @@ class Player {
         ctx.fillRect(this.x + 22, this.y + 10, 8, 8);
 
         ctx.globalAlpha = 1.0;
-        
-        // Visual indicator for double jump availability
-        if (!this.onGround && this.jumpsRemaining > 0) {
-            ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
-            ctx.fillRect(this.x, this.y + this.height, this.width, 3);
-        }
     }
 }
 
@@ -262,8 +252,7 @@ class Monster {
 class Coin {
     constructor() {
         this.x = canvas.width;
-        // Increased max height from 150 to 250 for double-jump reach
-        this.y = CONFIG.GROUND_Y - 40 - Math.random() * 180;
+        this.y = CONFIG.GROUND_Y - 40 - Math.random() * 150;
         this.width = 20;
         this.height = 20;
         this.speed = 2;
@@ -300,8 +289,7 @@ class Coin {
 class BigCoin {
     constructor() {
         this.x = canvas.width;
-        // Increased max height from 150 to 250 for double-jump reach
-        this.y = CONFIG.GROUND_Y - 40 - Math.random() * 210;
+        this.y = CONFIG.GROUND_Y - 40 - Math.random() * 150;
         this.width = 30;
         this.height = 30;
         this.speed = 2;
@@ -341,7 +329,6 @@ class BigCoin {
                player.y + player.height > this.y;
     }
 }
-
 
 class Game {
     constructor() {
