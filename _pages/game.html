@@ -12,32 +12,31 @@ author_profile: False
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Run & Shoot Game</title>
 <style>
-    body { 
-        margin: 0; 
-        overflow: hidden; 
-        background: #222; 
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: #222;
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
         font-family: Arial, sans-serif;
     }
-    canvas { 
-        display: block; 
-        background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%); 
+    canvas {
+        display: block;
+        background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%);
         box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
     #instructions {
-    position: absolute;
-    top: 120px;  /* Moved down to avoid banner */
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    background: rgba(0,0,0,0.7);
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 14px;
-    z-index: 100;  /* Ensure it's above other elements */
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        background: rgba(0,0,0,0.7);
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 14px;
     }
 </style>
 </head>
@@ -63,7 +62,8 @@ const CONFIG = {
     MONSTER_BASE_SPEED: 2,
     MONSTER_SPAWN_BASE_RATE: 100,
     DIFFICULTY_SCALE: 600,
-    COIN_SPAWN_RATE: 120
+    COIN_SPAWN_RATE: 120,
+    BIG_COIN_SPAWN_RATE: 300
 };
 
 class Player {
@@ -152,11 +152,11 @@ class Player {
 
         ctx.fillStyle = "#1ABC9C";
         ctx.fillRect(this.x, this.y, this.width, this.height);
-        
+
         ctx.fillStyle = "white";
         ctx.fillRect(this.x + 10, this.y + 10, 8, 8);
         ctx.fillRect(this.x + 22, this.y + 10, 8, 8);
-        
+
         ctx.globalAlpha = 1.0;
     }
 }
@@ -221,7 +221,7 @@ class Monster {
     draw() {
         ctx.fillStyle = `hsl(${this.hue}, 80%, 50%)`;
         ctx.fillRect(this.x, this.y, this.width, this.height);
-        
+
         ctx.fillStyle = "white";
         ctx.fillRect(this.x + 8, this.y + 10, 8, 8);
         ctx.fillRect(this.x + 24, this.y + 10, 8, 8);
@@ -232,10 +232,10 @@ class Monster {
         const hpBarWidth = 36;
         const hpBarHeight = 4;
         const hpPercentage = this.hp / this.maxHp;
-        
+
         ctx.fillStyle = "rgba(0,0,0,0.5)";
         ctx.fillRect(this.x + 2, this.y - 8, hpBarWidth, hpBarHeight);
-        
+
         ctx.fillStyle = hpPercentage > 0.5 ? "#2ECC71" : hpPercentage > 0.25 ? "#F39C12" : "#E74C3C";
         ctx.fillRect(this.x + 2, this.y - 8, hpBarWidth * hpPercentage, hpBarHeight);
     }
@@ -285,6 +285,50 @@ class Coin {
     }
 }
 
+class BigCoin {
+    constructor() {
+        this.x = canvas.width;
+        this.y = CONFIG.GROUND_Y - 40 - Math.random() * 150;
+        this.width = 30;
+        this.height = 30;
+        this.speed = 2;
+        this.active = true;
+        this.value = 2;
+    }
+
+    update() {
+        this.x -= this.speed;
+        if (this.x + this.width < 0) {
+            this.active = false;
+        }
+    }
+
+    draw() {
+        ctx.fillStyle = "#FFD700";
+        ctx.beginPath();
+        ctx.arc(this.x + this.width/2, this.y + this.height/2, this.width/2, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = "#FFF8DC";
+        ctx.beginPath();
+        ctx.arc(this.x + this.width/2 - 4, this.y + this.height/2 - 4, 6, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = "#8B4513";
+        ctx.font = "bold 12px Arial";
+        ctx.textAlign = "center";
+        ctx.fillText("2x", this.x + this.width/2, this.y + this.height/2 + 4);
+        ctx.textAlign = "left";
+    }
+
+    collidesWith(player) {
+        return player.x < this.x + this.width &&
+               player.x + player.width > this.x &&
+               player.y < this.y + this.height &&
+               player.y + player.height > this.y;
+    }
+}
+
 class Game {
     constructor() {
         this.reset();
@@ -295,13 +339,15 @@ class Game {
         this.bullets = [];
         this.monsters = [];
         this.coins = [];
+        this.bigCoins = [];
         this.score = 0;
         this.coinsCollected = 0;
         this.gameOver = false;
         this.monsterSpawnTimer = 0;
         this.coinSpawnTimer = 0;
+        this.bigCoinSpawnTimer = 0;
         this.difficultyTimer = 0;
-        this.highScore = parseInt(localStorage.getItem('highScore') || '0');
+        this.highScore = parseFloat(localStorage.getItem('highScore') || '0');
     }
 
     update() {
@@ -318,8 +364,12 @@ class Game {
         this.coins = this.coins.filter(c => c.active);
         this.coins.forEach(c => c.update());
 
+        this.bigCoins = this.bigCoins.filter(c => c.active);
+        this.bigCoins.forEach(c => c.update());
+
         this.spawnMonster();
         this.spawnCoin();
+        this.spawnBigCoin();
         this.checkCollisions();
         this.difficultyTimer++;
     }
@@ -327,7 +377,7 @@ class Game {
     spawnMonster() {
         this.monsterSpawnTimer++;
         const spawnRate = Math.max(50, CONFIG.MONSTER_SPAWN_BASE_RATE - Math.floor(this.difficultyTimer / 300));
-        
+
         if (this.monsterSpawnTimer > spawnRate) {
             this.monsters.push(new Monster(this.difficultyTimer));
             this.monsterSpawnTimer = 0;
@@ -342,43 +392,63 @@ class Game {
         }
     }
 
+    spawnBigCoin() {
+        this.bigCoinSpawnTimer++;
+        if (this.bigCoinSpawnTimer > CONFIG.BIG_COIN_SPAWN_RATE) {
+            this.bigCoins.push(new BigCoin());
+            this.bigCoinSpawnTimer = 0;
+        }
+    }
+
     checkCollisions() {
-    this.bullets.forEach(bullet => {
-        this.monsters.forEach(monster => {
-            if (bullet.active && monster.active && bullet.collidesWith(monster)) {
-                bullet.active = false;
-                if (monster.takeDamage()) {
-                    monster.active = false;
-                    this.score++;
-                    if (this.score > this.highScore) {
-                        this.highScore = this.score;
-                        localStorage.setItem('highScore', this.highScore.toString());
+        this.bullets.forEach(bullet => {
+            this.monsters.forEach(monster => {
+                if (bullet.active && monster.active && bullet.collidesWith(monster)) {
+                    bullet.active = false;
+                    if (monster.takeDamage()) {
+                        monster.active = false;
+                        this.score++;
+                        if (this.score > this.highScore) {
+                            this.highScore = this.score;
+                            localStorage.setItem('highScore', this.highScore.toString());
+                        }
                     }
+                }
+            });
+        });
+
+        this.monsters.forEach((monster, i) => {
+            if (monster.active && monster.collidesWith(this.player)) {
+                this.monsters.splice(i, 1);
+                if (this.player.takeDamage()) {
+                    this.gameOver = true;
                 }
             }
         });
-    });
 
-    this.monsters.forEach((monster, i) => {
-        if (monster.active && monster.collidesWith(this.player)) {
-            this.monsters.splice(i, 1);
-            if (this.player.takeDamage()) {
-                this.gameOver = true;
+        this.coins.forEach((coin, i) => {
+            if (coin.active && coin.collidesWith(this.player)) {
+                this.coins.splice(i, 1);
+                this.coinsCollected++;
+                this.score += 0.5;
+                if (this.score > this.highScore) {
+                    this.highScore = this.score;
+                    localStorage.setItem('highScore', this.highScore.toString());
+                }
             }
-        }
-    });
+        });
 
-    this.coins.forEach((coin, i) => {
-        if (coin.active && coin.collidesWith(this.player)) {
-            this.coins.splice(i, 1);
-            this.coinsCollected++;
-            this.score += 0.5;  // Add 0.5 points per coin
-            if (this.score > this.highScore) {
-                this.highScore = this.score;
-                localStorage.setItem('highScore', this.highScore.toString());
+        this.bigCoins.forEach((bigCoin, i) => {
+            if (bigCoin.active && bigCoin.collidesWith(this.player)) {
+                this.bigCoins.splice(i, 1);
+                this.coinsCollected += bigCoin.value;
+                this.score += bigCoin.value * 0.5;
+                if (this.score > this.highScore) {
+                    this.highScore = this.score;
+                    localStorage.setItem('highScore', this.highScore.toString());
+                }
             }
-        }
-    });
+        });
     }
 
     draw() {
@@ -393,42 +463,43 @@ class Game {
         this.bullets.forEach(b => b.draw());
         this.monsters.forEach(m => m.draw());
         this.coins.forEach(c => c.draw());
+        this.bigCoins.forEach(c => c.draw());
 
         this.drawUI();
     }
 
     drawUI() {
-    ctx.fillStyle = "rgba(0,0,0,0.7)";
-    ctx.fillRect(10, 10, 180, 95);
-    ctx.fillStyle = "white";
-    ctx.font = "bold 20px Arial";
-    ctx.fillText(`Score: ${this.score.toFixed(1)}`, 20, 35);  // Show 1 decimal place
-    ctx.font = "14px Arial";
-    ctx.fillText(`High Score: ${this.highScore.toFixed(1)}`, 20, 55);
-    ctx.fillText(`Coins: ${this.coinsCollected}`, 20, 75);
-
-    ctx.font = "24px Arial";
-    for (let i = 0; i < this.player.maxHp; i++) {
-        ctx.fillText(i < this.player.hp ? "❤" : "🖤", 20 + i * 30, 95);
-    }
-
-    if (this.gameOver) {
-        ctx.fillStyle = "rgba(0,0,0,0.8)";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+        ctx.fillStyle = "rgba(0,0,0,0.7)";
+        ctx.fillRect(10, 10, 180, 95);
         ctx.fillStyle = "white";
-        ctx.font = "bold 48px Arial";
-        ctx.textAlign = "center";
-        ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2 - 60);
+        ctx.font = "bold 20px Arial";
+        ctx.fillText(`Score: ${this.score.toFixed(1)}`, 20, 35);
+        ctx.font = "14px Arial";
+        ctx.fillText(`High Score: ${this.highScore.toFixed(1)}`, 20, 55);
+        ctx.fillText(`Coins: ${this.coinsCollected}`, 20, 75);
 
         ctx.font = "24px Arial";
-        ctx.fillText(`Final Score: ${this.score.toFixed(1)}`, canvas.width / 2, canvas.height / 2 - 10);
-        ctx.fillText(`Coins: ${this.coinsCollected}`, canvas.width / 2, canvas.height / 2 + 30);
+        for (let i = 0; i < this.player.maxHp; i++) {
+            ctx.fillText(i < this.player.hp ? "❤" : "🖤", 20 + i * 30, 95);
+        }
 
-        ctx.font = "18px Arial";
-        ctx.fillText("Press R to Restart", canvas.width / 2, canvas.height / 2 + 70);
+        if (this.gameOver) {
+            ctx.fillStyle = "rgba(0,0,0,0.8)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.textAlign = "left";
+            ctx.fillStyle = "white";
+            ctx.font = "bold 48px Arial";
+            ctx.textAlign = "center";
+            ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2 - 60);
+
+            ctx.font = "24px Arial";
+            ctx.fillText(`Final Score: ${this.score.toFixed(1)}`, canvas.width / 2, canvas.height / 2 - 10);
+            ctx.fillText(`Coins: ${this.coinsCollected}`, canvas.width / 2, canvas.height / 2 + 30);
+
+            ctx.font = "18px Arial";
+            ctx.fillText("Press R to Restart", canvas.width / 2, canvas.height / 2 + 70);
+
+            ctx.textAlign = "left";
         }
     }
 }
@@ -436,12 +507,12 @@ class Game {
 const keys = {};
 document.addEventListener("keydown", (e) => {
     keys[e.code] = true;
-    
+
     if (e.code === "KeyW") {
         e.preventDefault();
         game.player.jump();
     }
-    
+
     if (e.code === "KeyR" && game.gameOver) {
         game.reset();
     }
@@ -468,7 +539,7 @@ function gameLoop() {
 
     game.update();
     game.draw();
-    
+
     requestAnimationFrame(gameLoop);
 }
 
