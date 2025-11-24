@@ -1,14 +1,16 @@
 ---
+layout: default
 title: "Game"
 permalink: /game/
 author_profile: False
 ---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Exciting Game</title>
+<title>Run & Shoot Game</title>
 <style>
     body {
         margin: 0;
@@ -57,7 +59,7 @@ const CONFIG = {
     PLAYER_SPEED: 5,
     BULLET_SPEED: 8,
     BULLET_COOLDOWN: 200,
-    MONSTER_BASE_SPEED: 3,
+    MONSTER_BASE_SPEED: 2,
     MONSTER_SPAWN_BASE_RATE: 100,
     DIFFICULTY_SCALE: 600,
     COIN_SPAWN_RATE: 120,
@@ -261,7 +263,7 @@ class Coin {
     constructor() {
         this.x = canvas.width;
         // Increased max height from 150 to 250 for double-jump reach
-        this.y = CONFIG.GROUND_Y - 40 - Math.random() * 190;
+        this.y = CONFIG.GROUND_Y - 40 - Math.random() * 180;
         this.width = 20;
         this.height = 20;
         this.speed = 2;
