@@ -4,13 +4,12 @@ title: "Game"
 permalink: /game/
 author_profile: False
 ---
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Run & Shoot Game</title>
+<title>Square Ghost Game</title>
 <style>
     body {
         margin: 0;
@@ -28,15 +27,16 @@ author_profile: False
         box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
     #instructions {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: white;
-        background: rgba(0,0,0,0.7);
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-size: 14px;
+    position: absolute;
+    top: 120px;  /* Moved down to avoid banner */
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background: rgba(0,0,0,0.7);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 100;  /* Ensure it's above other elements */
     }
 </style>
 </head>
