@@ -1,5 +1,5 @@
 import Phaser from 'https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.esm.js';
-import GameScene from './scenes/GameScene.js';
+import GameScene from './GameScene.js';
 
 const config = {
   type: Phaser.AUTO,
