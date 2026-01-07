@@ -27,16 +27,18 @@ author_profile: False
         background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%);
         box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
-    #instructions {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: white;
-        background: rgba(0,0,0,0.7);
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-size: 14px;
+
+   #instructions {
+    position: absolute;
+    top: 120px;  /* Moved down to avoid banner */
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background: rgba(0,0,0,0.7);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 100;
     }
 </style>
 </head>
