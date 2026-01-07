@@ -27,7 +27,6 @@ author_profile: False
         background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%);
         box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
-
    #instructions {
     position: absolute;
     top: 120px;  /* Moved down to avoid banner */
@@ -38,7 +37,7 @@ author_profile: False
     padding: 10px 20px;
     border-radius: 5px;
     font-size: 14px;
-    z-index: 100;
+    z-index: 100;  /* Ensure it's above other elements */
     }
 </style>
 </head>
@@ -86,7 +85,7 @@ class Player {
         this.lastShot = 0;
         this.invulnerable = false;
         this.invulnerableTimer = 0;
-        this.jumpsRemaining = 2;  // Allow 2 jumps
+	this.jumpsRemaining = 2;
     }
 
     update() {
@@ -131,7 +130,6 @@ class Player {
             this.dy = CONFIG.PLAYER_JUMP_POWER;
             this.jumpsRemaining--;
             this.onGround = false;
-        }
     }
 
     shoot(bullets) {
@@ -165,6 +163,7 @@ class Player {
         ctx.fillRect(this.x + 22, this.y + 10, 8, 8);
 
         ctx.globalAlpha = 1.0;
+
         
         // Visual indicator for double jump availability
         if (!this.onGround && this.jumpsRemaining > 0) {
@@ -264,7 +263,6 @@ class Monster {
 class Coin {
     constructor() {
         this.x = canvas.width;
-        // Increased max height from 150 to 250 for double-jump reach
         this.y = CONFIG.GROUND_Y - 40 - Math.random() * 180;
         this.width = 20;
         this.height = 20;
@@ -302,7 +300,6 @@ class Coin {
 class BigCoin {
     constructor() {
         this.x = canvas.width;
-        // Increased max height from 150 to 250 for double-jump reach
         this.y = CONFIG.GROUND_Y - 40 - Math.random() * 210;
         this.width = 30;
         this.height = 30;
@@ -343,7 +340,6 @@ class BigCoin {
                player.y + player.height > this.y;
     }
 }
-
 
 class Game {
     constructor() {
