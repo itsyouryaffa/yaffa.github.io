@@ -18,23 +18,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         }, delay);
     }
-    function flipOneCard(card) {
-    const wrapper = document.querySelector('.one-card-wrapper');
-    const back = wrapper.querySelector('.card-back');
-    const front = wrapper.querySelector('.card-front');
-
-    front.style.backgroundImage = `url('../images/${card.name}.jpg')`;
-
-    if(card.reversed === 'Reversed') {
-        front.style.transform = 'rotateY(180deg) rotate(180deg)';
-    } else {
-        front.style.transform = 'rotateY(180deg) rotate(0deg)';
-    }
-
-    back.style.transform = 'rotateY(180deg)';
-    front.style.transform = 'rotateY(0deg)' + (card.reversed === 'Reversed' ? ' rotate(180deg)' : '');
-    }
-
 
     // ---------- Card definitions ----------
     const majorArcana = Array.from({ length: 22 }, (_, i) => `m${i.toString().padStart(2, '0')}`);
@@ -62,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const card = allCards[Math.floor(Math.random() * allCards.length)];
             card.reversed = Math.random() < 0.5 ? "Upright" : "Reversed";
     
-            flipOneCard(imgEl, card);
+            flipToCard(imgEl, card);
         });
     }
 
