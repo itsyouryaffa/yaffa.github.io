@@ -33,6 +33,24 @@ document.addEventListener("DOMContentLoaded", function() {
         ...swords.map(name => ({ name, type: 'Swords' })),
         ...wands.map(name => ({ name, type: 'Wands' }))
     ];
+    // ---------1 card ----------
+    const oneButton = document.getElementById("draw-one-btn");
+    const oneCardWrapper = document.querySelector(".one-card-wrapper");
+    
+    if (oneButton && oneCardWrapper) {
+        oneButton.addEventListener("click", () => {
+            const imgEl = oneCardWrapper.querySelector(".tarot-img");
+            if (!imgEl) return;
+    
+            const card = allCards[Math.floor(Math.random() * allCards.length)];
+            card.reversed = Math.random() < 0.5 ? "Upright" : "Reversed";
+    
+            flipToCard(imgEl, card, 0);
+    
+            oneCardWrapper.dataset.cardName = card.name;
+            oneCardWrapper.dataset.cardOrientation = card.reversed;
+        });
+    }
 
     // ---------- 3-card spread ----------
     const button = document.getElementById("draw-btn");
