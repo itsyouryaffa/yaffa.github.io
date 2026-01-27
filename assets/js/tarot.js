@@ -42,16 +42,10 @@ document.addEventListener("DOMContentLoaded", function() {
             const imgEl = oneCardWrapper.querySelector(".tarot-img");
             if (!imgEl) return;
     
-            // 随机抽一张牌
             const card = allCards[Math.floor(Math.random() * allCards.length)];
             card.reversed = Math.random() < 0.5 ? "Upright" : "Reversed";
     
-            // 翻牌
             flipToCard(imgEl, card);
-    
-            // 保存数据
-            oneCardWrapper.dataset.cardName = card.name;
-            oneCardWrapper.dataset.cardOrientation = card.reversed;
         });
     }
 
