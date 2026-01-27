@@ -14,10 +14,14 @@ author_profile: False
 <body>
 <div class="container">
     <h2>One Card</h2>
-    <button id="draw-one-btn">🃏</button>
-    <div class="one-card-wrapper">
-    <img class="tarot-img" src="../images/back.jpg" alt="Single Card">
+    <button id="draw-one-btn">💫</button>
+    
+    <div class="one-card-container">
+      <div class="one-card-wrapper">
+        <img class="tarot-img" src="../images/back.jpg" alt="Single Card">
+      </div>
     </div>
+
 
     <h1>🔮</h1>
 
@@ -84,21 +88,27 @@ h1 { color: #4a148c; }
 button { padding: 10px 20px; font-size: 18px; background: #6a1b9a; color: white; border: none; border-radius: 5px; cursor: pointer; }
 button:hover { background: #4a148c; }
 
+.one-card-container {
+  display: flex;
+  justify-content: center; 
+  margin: 40px 0;          
+}
+
 .one-card-wrapper {
-    perspective: 1000px;
-    display: inline-block;
-    margin-top: 20px;
+  perspective: 1000px;     
 }
+
 .one-card-wrapper img {
-    width: 150px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    transition: transform 1s;
-    backface-visibility: hidden;
+  width: 150px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 1s;      
+  backface-visibility: hidden;  
+  display: block;
+  transform-style: preserve-3d;
 }
 
-
-/* 5-card V-shape (unchanged) */
+/* 5-card V-shape */
 .v-cards-container {
     position: relative;
     width: 100%;
