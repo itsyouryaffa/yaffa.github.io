@@ -60,6 +60,43 @@ author_profile: False
             <div class="v7-card v7-card-7" data-branch="right" data-label="Right Top"><img class="tarot-img" src="../images/back.jpg" alt="Right Top"></div>
         </div>
     </div>
+    
+    <div style="margin-top:60px;">
+      <h2>Relationship</h2>
+      <button id="draw-relationship-btn">🌟</button>
+
+      <div class="relationship-cards-container" id="relationship-cards-container">
+        <div class="relationship-card">
+          <div class="relationship-card-wrapper"><img class="tarot-img" src="../images/back.jpg" alt="Card 1"></div>
+          <div class="relationship-label">My Place in Their Heart</div>
+        </div>
+
+        <div class="relationship-card">
+          <div class="relationship-card-wrapper"><img class="tarot-img" src="../images/back.jpg" alt="Card 2"></div>
+          <div class="relationship-label">Their View of Our Relationship</div>
+        </div>
+    
+        <div class="relationship-card">
+          <div class="relationship-card-wrapper"><img class="tarot-img" src="../images/back.jpg" alt="Card 3"></div>
+          <div class="relationship-label">Their Expectations for the Future</div>
+        </div>
+
+        <div class="relationship-card">
+          <div class="relationship-card-wrapper"><img class="tarot-img" src="../images/back.jpg" alt="Card 4"></div>
+          <div class="relationship-label">Their Place in My Heart</div>
+        </div>
+    
+        <div class="relationship-card">
+          <div class="relationship-card-wrapper"><img class="tarot-img" src="../images/back.jpg" alt="Card 5"></div>
+          <div class="relationship-label">Current State of the Relationship</div>
+        </div>
+    
+        <div class="relationship-card">
+          <div class="relationship-card-wrapper"><img class="tarot-img" src="../images/back.jpg" alt="Card 6"></div>
+          <div class="relationship-label">Future of the Relationship</div>
+        </div>
+      </div>
+    </div>
 </div>
 
 <style>
@@ -161,6 +198,55 @@ button:hover { background: #4a148c; }
 
 .v7-card-6 { left: 72%; top: 46%; z-index: 2; } /* right mid */
 .v7-card-7 { left: 82%; top: 16%; z-index: 1; } /* right top */
+
+.relationship-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 30px;
+  justify-items: center;
+  align-items: start;
+}
+
+.relationship-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.relationship-card-wrapper {
+  perspective: 1000px;
+}
+
+.relationship-card-wrapper .tarot-img {
+  width: 150px;
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  transition: transform 1s;
+}
+
+.relationship-label {
+  max-width: 180px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .relationship-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .relationship-cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
 </style>
  
 <script src="../assets/js/tarot.js"></script>
