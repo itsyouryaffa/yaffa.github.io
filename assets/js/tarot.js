@@ -160,4 +160,29 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
+    // -----Relationship----
+    const relationshipButton = document.getElementById("draw-relationship-btn");
+    const relationshipWrappers = document.querySelectorAll(".relationship-card-wrapper");
+
+    if (relationshipButton && relationshipWrappers.length) {
+      relationshipButton.addEventListener("click", () => {
+        let deck = [...allCards];
+        let drawnCards = [];
+    
+        for (let i = 0; i < relationshipWrappers.length; i++) {
+          const idx = Math.floor(Math.random() * deck.length);
+          const card = deck.splice(idx, 1)[0];
+          const reversed = Math.random() < 0.5 ? "Upright" : "Reversed";
+          drawnCards.push({ ...card, reversed });
+        }
+    
+        relationshipWrappers.forEach((wrapper, index) => {
+          const imgEl = wrapper.querySelector(".tarot-img");
+          if (!imgEl) return;
+          flipToCard(imgEl, drawnCards[index], index * 500);
+        });
+      });
+    }
+
+
 });
